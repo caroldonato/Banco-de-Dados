@@ -1,0 +1,14 @@
+Cliente(cod_cliente, nome, endereco)
+P_fisica(cod_cliente, sexo, data_nasc, cpf)
+P_juridica(cod_cliente, cnpj, inscr_estado)
+Motorista(cod_motorista, cod_cliente, num_habili, vencimento_habili)
+
+Veiculo(cod_placa, cod_tipo, num_chassi, num_motor, cor, km_atual)
+Tipo_veiculo(cod_tipo)
+Tipo_carga(cod_tipo, capacidade)
+Tipo_passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, cd, mpt, dir_hidr, cambio_auto)
+Revisao(cod_tipo, cod_revisao, horas_revisao, horas_limpeza, km_media)
+
+Filial(cod_filial)
+Locacao(cod_locacao, cod_placa, cod_filial, cod_motorista, data, prazo)
+Reserva(cod_reserva  cod_cliente, cod_tipo, cod_filial_orig, cod_filial_dest)
