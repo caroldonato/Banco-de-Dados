@@ -2,6 +2,7 @@ package sgbd.locadoraveiculos.objects;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,7 +20,7 @@ public class Locacao {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "cod_motorista")
-    private Motorista motorista;
+    private List<Motorista> motorista;
 
     private java.time.LocalDate data_entrega;
 
@@ -48,11 +49,11 @@ public class Locacao {
         this.filial_dest = filial_dest;
     }
 
-    public Motorista getMotorista() {
+    public List<Motorista> getMotorista() {
         return motorista;
     }
 
-    public void setMotorista(Motorista motorista) {
+    public void setMotorista(List<Motorista> motorista) {
         this.motorista = motorista;
     }
 

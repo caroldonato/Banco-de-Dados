@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "cliente")
 public class Cliente {
     @Id
     private Integer cod_cliente;

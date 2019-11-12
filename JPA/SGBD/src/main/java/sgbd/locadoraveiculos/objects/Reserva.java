@@ -9,7 +9,7 @@ public class Reserva {
     @Id
     private Integer cod_reserva;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "cod_tipo")
     private Tipo_Veiculo tipo;
 
