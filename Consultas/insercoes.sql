@@ -38,5 +38,6 @@ INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, dat
     WHERE nome = 'Joao S. Imobiliaria' AND cnpj = 18853410000140
 ), 2020-10-10, 2020-11-15);
 
--- Inserir locação
-INSERT INTO Locacao()
+-- Inserir locação de motorista por numero de habilitação
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES
+('ABC-1234', 'Filial2', 12345678900, 2020-10-20);
