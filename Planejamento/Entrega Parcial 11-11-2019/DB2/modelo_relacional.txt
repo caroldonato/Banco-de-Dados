@@ -1,0 +1,17 @@
+Cliente(cod_cliente_, nome, endereco)
+P_Fisica(cod_cliente_*, sexo, data_nasc, cpf)
+P_Juridica(cod_cliente_*, cnpj, inscr_estado)
+Motorista(cod_motorista_, cod_cliente*, num_habili, vencimento_habili, ident_motorista)
+
+Tipo_Veiculo(cod_tipo_, horas_limpeza, horas_revisao)
+Tipo_Passageiro(cod_tipo_*, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto)
+Tipo_Carga(cod_tipo_*, capacidade)
+Revisao(cod_tipo_*, cod_revisao_, km_media)
+Veiculo(cod_placa_, cod_tipo*, cod_filial_atual*, num_chassi, num_motor, cor, km_atual, revisao_pendente)
+
+Filial(cod_filial_, localizacao)
+Reserva(cod_reserva_, cod_tipo*, cod_filial_dest*, cod_filial_orig*, cod_cliente*, data_retirada, data_entrega)
+Locacao(cod_locacao_, cod_placa*, cod_filial_dest*, cod_motorista*, data_entrega)
+
+Os atributos que acabam com "_" fazem parte da chave primária. Aqueles que terminam com "*" são chaves estrangeiras.
+Aqueles que terminam com os dois símbolos, fazem parte da chave primária e é uma chave estrangeira.
