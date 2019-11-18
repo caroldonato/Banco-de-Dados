@@ -62,8 +62,9 @@ CREATE TABLE Veiculo(
     num_chassi VARCHAR(10),
     num_motor VARCHAR(10),
     cor VARCHAR(20),
-    km_atual INTEGER,
-    revisao_pendente BIT,
+    km_atual INTEGER DEFAULT 0,
+    revisao_pendente BIT DEFAULT 0,
+    parado BIT DEFAULT 1,
     
     FOREIGN KEY (cod_tipo) 
         REFERENCES Tipo_Veiculo(cod_tipo) 
