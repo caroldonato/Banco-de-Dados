@@ -43,19 +43,19 @@ INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorist
 ---------------------------------Ações de clientes------------------------------------
 --------------------------------------------------------------------------------------
 -- Consultar os veículos disponíveis em determinada filial na data corrente.
--- Ou seja, os veiculos no dia atual que estão parados.
-SELECT cod_placa
-FROM Veiculo
-WHERE cod_filial_atual = 'Filial' AND parado = 1;
+	-- Ou seja, os veiculos no dia atual que estão parados.
+	SELECT cod_placa
+	FROM Veiculo
+	WHERE cod_filial_atual = 'Filial' AND parado = 1;
 
 -- Consultar as reservas possíveis para veículos em uma filial, com previsão de que veículos estarão disponíveis em uma data futura;
--- Veiculos em todos os estados em uma filial em uma data futura que podem ser locados
-    -- Veículo com locação com destino à filial e com data de entrega mais cedo que a data analisada
-	-- Veiculo parado na filial
-	-- Uniao das duas tabelas de veículos disponíveis
-	-- Reservas marcadas para a data procurada para o tipo de carro procurado na filial procurada
-	-- Contar quantos veículos do tipo desejado estão disponíveis na filial, ou seja, parado ou chegando à filial de acordo com o subitem anterior
-    -- Ver se essa contagem é maior que a quantidade de reservas desse tipo de veiculo pro dia analisado
+	-- Veiculos em todos os estados em uma filial em uma data futura que podem ser locados
+		-- Veículo com locação com destino à filial e com data de entrega mais cedo que a data analisada
+		-- Veiculo parado na filial
+		-- Uniao das duas tabelas de veículos disponíveis
+		-- Reservas marcadas para a data procurada para o tipo de carro procurado na filial procurada
+		-- Contar quantos veículos do tipo desejado estão disponíveis na filial, ou seja, parado ou chegando à filial de acordo com o subitem anterior
+		-- Ver se essa contagem é maior que a quantidade de reservas desse tipo de veiculo pro dia analisado
 
 	-- Consulta final:
 	WITH veic_loc_date AS (
@@ -91,8 +91,51 @@ WHERE cod_filial_atual = 'Filial' AND parado = 1;
 	GROUP BY (cod_tipo)
 	HAVING COUNT(query_table.cod_placa) > COUNT(reserv_filial_date.cod_placa)
 	
+-- Consultar os veículos presentemente alugados pela filial, o ponto de entrega (caso seja diferente do de locação) e data de entrega prevista.
+	WITH newest_locacao AS (
+		SELECT l1.*
+		FROM Locacao AS l1 LEFT JOIN Locacao AS l2
+			ON (l1.cod_placa = l2.cod_placa AND l1.data_entrega < l2.data_entrega)
+		WHERE l2.data_entrega IS NULL
+	)
+	SELECT cod_placa, cod_filial_atual, cod_filial_dest, data_entrega
+	FROM Veiculo JOIN newest_locacao ON Veiculo.cod_placa = newest_locacao.cod_placa
+	WHERE data_entrega < 'Dia atual' AND cod_filial_atual = 'Filial analisada'
 
-    
+-- Fazer reserva
+	INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES
+	('M2', 'Filial1', 'Filial2', 163, '2020-10-10', '2020-10-20');
 
-    
--- Fazer reserva 
+-- Fazer locação
+	INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES
+	('ABC-1234', 'Filial2', 53, '2020-10-20');
+
+--------------------------------------------------------------------------------------
+---------------------------------Consultas do grupo A---------------------------------
+--------------------------------------------------------------------------------------
+
+-- Consultar todos os veiculos e seus dados da locadora
+	SELECT *
+	FROM
+		Veiculo JOIN Tipo_veiculo
+		ON Veiculo.cod_tipo = Tipo_veiculo.cod_tipo
+	
+-- Todos os dados do veículo da placa especificada
+	SELECT *
+	FROM
+		Veiculo JOIN Tipo_veiculo
+		ON Veiculo.cod_tipo = Tipo_veiculo.cod_tipo
+	WHERE cod_placa = 'ABC-1234'
+
+-- Todas as identificações dos veículos com a cor fornecida
+	SELECT *
+	FROM Veiculo
+	WHERE cod = 'Preto'
+
+-- Todas as identificações dos veóuclos com quilometragem abaixo de uma marca fornecida
+	SELECT *
+	FROM Veiculo
+	WHERE km_atual < 30000
+
+
+	
