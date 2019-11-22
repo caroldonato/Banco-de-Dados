@@ -38,12 +38,12 @@ CREATE TABLE Tipo_Veiculo(
     tamanho VARCHAR(1),
     num_lugares INTEGER,
     num_portas INTEGER,
-    ar_condicionado VARCHAR(1),
-    radio VARCHAR(1),
-    mp3 VARCHAR(1),
-    cd VARCHAR(1),
-    dir_hidr VARCHAR(1),
-    cambio_auto VARCHAR(1),
+    ar_condicionado BIT,
+    radio BIT,
+    mp3 BIT,
+    cd BIT,
+    dir_hidr BIT,
+    cambio_auto BIT,
     
     capacidade INTEGER,
 );

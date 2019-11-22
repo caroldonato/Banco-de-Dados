@@ -6,11 +6,11 @@ INSERT INTO Filial(cod_filial, localizacao) VALUES
 ('Filial1', 'Pindamonhangaba');
 
 -- Inserir tipo de veículo de passageiro
-INSERT INTO Tipo_veiculo(cod_tipo, horas_limpeza, horas_revisao, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES
-('M2', 5, 10, 'M', 5, 4, 'S', 'N', 'N', 'N', 'S', 'S');
+INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES
+('M2', 5, 10, 'M', 5, 4, 1, 0, 0, 0, 1, 1);
 
 -- Inserir tipo de veículo de carga
-INSERT INTO Tipo_veiculo(cod_tipo, horas_limpeza, horas_revisao, capacidade) VALUES
+INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao, capacidade) VALUES
 ('G2', 5, 10, 500);
 -- Inserir veículo
 INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES
@@ -92,14 +92,8 @@ INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorist
 	HAVING COUNT(query_table.cod_placa) > COUNT(reserv_filial_date.cod_placa)
 	
 -- Consultar os veículos presentemente alugados pela filial, o ponto de entrega (caso seja diferente do de locação) e data de entrega prevista.
-	WITH newest_locacao AS (
-		SELECT l1.*
-		FROM Locacao AS l1 LEFT JOIN Locacao AS l2
-			ON (l1.cod_placa = l2.cod_placa AND l1.data_entrega < l2.data_entrega)
-		WHERE l2.data_entrega IS NULL
-	)
 	SELECT cod_placa, cod_filial_atual, cod_filial_dest, data_entrega
-	FROM Veiculo JOIN newest_locacao ON Veiculo.cod_placa = newest_locacao.cod_placa
+	FROM Veiculo JOIN locacoes_recentes ON Veiculo.cod_placa = locacoes_recentes.cod_placa
 	WHERE data_entrega < 'Dia atual' AND cod_filial_atual = 'Filial analisada'
 
 -- Fazer reserva
@@ -117,14 +111,14 @@ INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorist
 -- Consultar todos os veiculos e seus dados da locadora
 	SELECT *
 	FROM
-		Veiculo JOIN Tipo_veiculo
-		ON Veiculo.cod_tipo = Tipo_veiculo.cod_tipo
+		Veiculo JOIN Tipo_Veiculo
+		ON Veiculo.cod_tipo = Tipo_Veiculo.cod_tipo
 	
 -- Todos os dados do veículo da placa especificada
 	SELECT *
 	FROM
-		Veiculo JOIN Tipo_veiculo
-		ON Veiculo.cod_tipo = Tipo_veiculo.cod_tipo
+		Veiculo JOIN Tipo_Veiculo
+		ON Veiculo.cod_tipo = Tipo_Veiculo.cod_tipo
 	WHERE cod_placa = 'ABC-1234'
 
 -- Todas as identificações dos veículos com a cor fornecida
@@ -137,5 +131,152 @@ INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorist
 	FROM Veiculo
 	WHERE km_atual < 30000
 
+-- Veiculos do tipo passageiro e suas caracteristicas
+	SELECT
+		cod_tipo,
+		horas_limpeza,
+		horas_revisao,
+		tamanho,
+		num_lugares,
+		num_portas,
+		ar_condicionado,
+		radio,
+		mp3,
+		cd,
+		dir_hidr,
+		cambio_auto,
+		cod_placa,
+		cod_filial_atual,
+		num_chassi,
+		num_motor,
+		cor,
+		km_atual,
+		revisao_pendente,
+		parado
+	FROM
+		Tipo_Veiculo JOIN Veiculo
+		ON Tipo_Veiculo.cod_tipo = Veiculo.cod_tipo
+	WHERE capacidade IS NULL
 
-	
+-- Veiculos do tipo de carga e suas caracteristicas
+	SELECT
+		cod_tipo,
+		horas_limpeza,
+		horas_revisao,
+		capacidade,
+		cod_placa,
+		cod_filial_atual,
+		num_chassi,
+		num_motor,
+		cor,
+		km_atual,
+		revisao_pendente,
+		parado
+	FROM
+		Tipo_Veiculo JOIN Veiculo
+		ON Tipo_Veiculo.cod_tipo = Veiculo.cod_tipo
+	WHERE capacidade IS NULL
+
+-- Veiculos de passageiro do tamanho especificado
+	SELECT *
+	FROM Veiculo JOIN Tipo_Veiculo ON Tipo_Veiculo.cod_tipo = Veiculo.cod_tipo
+	WHERE tamanha = 'G'
+
+-- Veiculos de passsageiro com quantidade de tamanhos especificada
+	SELECT *
+	FROM Veiculo JOIN Tipo_Veiculo ON Tipo_Veiculo.cod_tipo = Veiculo.cod_tipo
+	WHERE num_lugares >= 4
+
+-- Veiculo de passageiros com numero de portas especificada
+	SELECT *
+	FROM Veiculo JOIN Tipo_Veiculo ON Tipo_Veiculo.cod_tipo = Veiculo.cod_tipo
+	WHERE num_portas = 4
+
+-- Veiculo de passageiro com ar condicionado e MP3
+	SELECT *
+	FROM Veiculo JOIN Tipo_Veiculo ON Tipo_Veiculo.cod_tipo = Veiculo.cod_tipo
+	WHERE ar_condicionado = 1 AND mp3 = 1
+
+-- Veiculo de passageiro com direção hidráulica
+	SELECT *
+	FROM Veiculo JOIN Tipo_Veiculo ON Tipo_Veiculo.cod_tipo = Veiculo.cod_tipo
+	WHERE dir_hidr = 1
+
+-- Veiculo de passageiro com cambio automatico e sem direção hidráulica
+	SELECT *
+	FROM Veiculo JOIN Tipo_Veiculo ON Tipo_Veiculo.cod_tipo = Veiculo.cod_tipo
+	WHERE dir_hidr = 0 AND cambio_auto = 1
+
+-- Veiculo de carga com capacidade acima da especificada
+	SELECT *
+	FROM Veiculo JOIN Tipo_Veiculo ON Tipo_Veiculo.cod_tipo = Veiculo.cod_tipo
+	WHERE capacidade > 3000
+
+-- Veiculos sem locação associada
+	SELECT Veiculo.*
+	FROM
+		Veiculo LEFT JOIN Locacao
+		ON Veiculo.cod_placa = Locacao.cod_placa
+	WHERE cod_locacao IS NULL
+
+-- Todos os clientes com locação de veiculos de carga registrados
+	SELECT DISTINCT Cliente.*
+	FROM
+		Locacao
+		JOIN Veiculo ON Locacao.cod_placa = Veiculo.cod_placa
+		JOIN Tipo_Veiculo ON Veiculo.cod_tipo = Tipo_Veiculo.cod_tipo
+		JOIN Motorista ON Locacao.cod_motorista = Motorista.cod_motorista
+		JOIN Cliente ON Motorista.cod_cliente = Cliente.cod_cliente
+	WHERE
+		capacidade IS NOT NULL
+
+-- Pessoa que está alugando determinado veículo
+	SELECT cod_cliente, nome, endereco
+	FROM 
+		locacoes_recentes
+		JOIN Veiculo ON locacoes_recentes.cod_placa = Veiculo.cod_placa
+		JOIN Motorista ON locacoes_recentes.cod_motorista = Motorista.cod_motorista
+		JOIN Cliente ON Motorista.cod_cliente = Cliente.cod_cliente
+	WHERE
+		cod_placa = 'ABC-1234' AND parado = 0
+
+-- Tempo de revisão e limpeza de um determinado veículo
+	SELECT horas_limpeza, horas_revisao
+	FROM Tipo_Veiculo JOIN Veiculo ON Tipo_Veiculo.cod_tipo = Veiculo.cod_tipo
+	WHERE cod_placa = 'ABC-1234'
+
+-- Nome e CPF de pessoas fisicas nascidas depois de 2000
+	SELECT nome, cpf
+	FROM Cliente
+	WHERE data_nasc > '2000-01-01'
+
+-- Motoristas com habilitação vencida
+	SELECT *
+	FROM Motorista
+	WHERE vencimento_habili <= 'Data atual aqui'
+
+-- Clientes com alguma reserva
+	SELECT DISTINCT Cliente.*
+	FROM Cliente JOIN reservas_recentes ON Cliente.cod_cliente = reservas_recentes.cod_cliente
+
+-- Código das reservas que originam e destinam para a mesma filial com tipo de veículo de carga
+	SELECT cod_reserva
+	FROM Reserva JOIN Tipo_Veiculo ON Reserva.cod_tipo = Tipo_Veiculo.cod_tipo
+	WHERE cod_filial_orig = cod_filial_dest AND capacidade IS NOT NULL
+
+-- Nome do cliente e placa de veículo de toda locação da filial destinataria informada onde a quilometragem atual do veiculo exceda 100.000 quilometros
+	SELECT nome, cod_placa
+	FROM
+		Locacao
+		JOIN Veiculo ON Locacao.cod_placa = Veiculo.cod_placa
+		JOIN Motorista ON Locacao.cod_motorista = Motorista.cod_motorista
+		JOIN Cliente ON Motorista.cod_cliente = Cliente.cod_cliente
+	WHERE km_atual > 100000 AND cod_filial_dest = 'Filial2'
+
+-- Nome do cliente e o numero de habilitação do motorista das locações feitas antes do dia 10 outubro de 2012
+	SELECT nome, ident_motorista
+	FROM
+		Locacao
+		JOIN Motorista ON Locacao.cod_motorista = Motorista.cod_motorista
+		JOIN Cliente ON Motorista.cod_cliente = Cliente.cod_cliente
+	WHERE data_entrega < '2012-10-10'
