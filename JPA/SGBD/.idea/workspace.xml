@@ -1,7 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="836def53-efd0-4d53-af22-a8d11c6a78d6" name="Default Changelist" comment="" />
+    <list default="true" id="836def53-efd0-4d53-af22-a8d11c6a78d6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/queries/TestQueries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/src/main/resources/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/src/main/resources/sample.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/P_Fisica.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/P_Juridica.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/Veiculo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/target/classes/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/target/classes/queries/TestQueries.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/target/classes/sample.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/target/classes/ui/Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/target/classes/ui/Main$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/target/maven-status/maven-compiler-plugin/compile/null/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../sgbd/target/maven-status/maven-compiler-plugin/compile/null/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGBD.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/sgdb.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/elements/SGDBTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/elements/SGDBTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/main/resources/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/Filial.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/Filial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/Locacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/Locacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/Motorista.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/Motorista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/P_Fisica.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/P_Fisica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/P_Juridica.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/P_Juridica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/Reserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/Revisao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/Revisao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/Tipo_Carga.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/Tipo_Carga.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/Tipo_Passageiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/Tipo_Passageiro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/Tipo_Veiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/Tipo_Veiculo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/objects/Veiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/entities/Veiculo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/ui/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/src/main/java/ui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/elements/SGDBTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/target/classes/elements/SGDBTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/Cliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/Cliente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/Filial.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/Filial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/Locacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/Locacao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/Motorista.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/Motorista.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/P_Fisica.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/P_Juridica.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/Reserva.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/Reserva.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/Revisao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/Revisao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/Tipo_Carga.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/Tipo_Carga.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/Tipo_Passageiro.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/Tipo_Passageiro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/Tipo_Veiculo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/target/classes/entities/Tipo_Veiculo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/objects/Veiculo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/sample/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/sample/Main$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../sgbd/target/classes/ui/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sgdb/target/classes/sample/sample.fxml" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +77,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -23,8 +88,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1TFCUz4S8m4iBwZveQGgeFyV2Eu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../UEL/ANO-3/SO_2019/Trabalho_WriteBoard_RMI/Apresentacao/WriteBoardRMI-CarolineMurilo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -79,5 +145,16 @@
       <updated>1573046475369</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
