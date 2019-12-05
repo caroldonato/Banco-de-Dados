@@ -21,6 +21,18 @@ public class ClientQueries {
     }
 
     /* CLIENT QUERIES */
+    public P_Fisica queryPFisicaWithNameAndCpf(String name, Integer cpf)
+    {
+        String jpql = "SELECT f FROM P_Fisica f, Cliente c WHERE f.cod_cliente = c.cod_cliente " +
+                      "AND c.nome = :nome AND f.cpf = :cpf";
+
+        TypedQuery<P_Fisica> typedQuery = em.createQuery(jpql, P_Fisica.class);
+        typedQuery.setParameter("nome", name);
+        typedQuery.setParameter("cpf", cpf);
+
+        return typedQuery.getSingleResult();
+    }
+
     public void sampleQuery()
     {
         String jpql = "select f from P_Fisica f";

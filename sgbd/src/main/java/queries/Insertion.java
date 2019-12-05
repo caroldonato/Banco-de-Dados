@@ -3,7 +3,9 @@ package queries;
 import entities.*;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
+@SuppressWarnings("unused")
 public class Insertion {
     private EntityManager em;
     private static Insertion instance = null;
@@ -25,6 +27,14 @@ public class Insertion {
         em.getTransaction().begin();
         em.persist(o);
         em.getTransaction().commit();
+    }
+
+    public void insertMotoristaForPFisicaUsingCpfAndName(Motorista m, String name, Integer cpf)
+    {
+        ClientQueries clientQueries = new ClientQueries(this.em);
+        P_Fisica pfisica = clientQueries.queryPFisicaWithNameAndCpf(name, cpf);
+        m.setCliente(pfisica);
+        this.insertEntity(m);
     }
 
     /* DATABASE INITIAL POPULATION */
