@@ -30,8 +30,8 @@ public class Deletion {
     {
         em.getTransaction().begin();
         em.createQuery("DELETE FROM Cliente").executeUpdate();
-        em.createQuery("DELETE FROM P_Fisica").executeUpdate();
-        em.createQuery("DELETE FROM P_Juridica").executeUpdate();
+        em.createQuery("DELETE FROM Pessoa_Fisica").executeUpdate();
+        em.createQuery("DELETE FROM Pessoa_Juridica").executeUpdate();
         em.createQuery("DELETE FROM Filial").executeUpdate();
         em.createQuery("DELETE FROM Locacao").executeUpdate();
         em.createQuery("DELETE FROM Motorista").executeUpdate();

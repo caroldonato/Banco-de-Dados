@@ -13,9 +13,21 @@ public class Motorista {
     @JoinColumn(name = "cod_cliente")
     private Cliente cliente;
 
-    private Integer num_habili;
-    private Integer ident_motorista;
+    private Long num_habili;
+    private Long ident_motorista;
     private LocalDate vencimento_habili;
+
+
+    public Motorista() { }
+
+    public Motorista(Cliente cliente, Long num_habili, Long ident_motorista, LocalDate vencimento_habili)
+    {
+        this.cliente = cliente;
+        this.num_habili = num_habili;
+        this.ident_motorista = ident_motorista;
+        this.vencimento_habili = vencimento_habili;
+    }
+
 
     // Getters & Setters
     public Integer getCod_motorista() {
@@ -38,19 +50,19 @@ public class Motorista {
         this.cliente = cliente;
     }
 
-    public Integer getNum_habili() {
+    public Long getNum_habili() {
         return num_habili;
     }
 
-    public void setNum_habili(Integer num_habili) {
+    public void setNum_habili(Long num_habili) {
         this.num_habili = num_habili;
     }
 
-    public Integer getIdent_motorista() {
+    public Long getIdent_motorista() {
         return ident_motorista;
     }
 
-    public void setIdent_motorista(Integer ident_motorista) {
+    public void setIdent_motorista(Long ident_motorista) {
         this.ident_motorista = ident_motorista;
     }
 

@@ -1,9 +1,12 @@
 package queries;
 
 import entities.*;
+import org.hibernate.JDBCException;
+import org.postgresql.util.PSQLException;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.PersistenceException;
+import java.sql.SQLException;
 
 @SuppressWarnings("unused")
 public class Insertion {
@@ -29,31 +32,39 @@ public class Insertion {
         em.getTransaction().commit();
     }
 
-    public void insertMotoristaForPFisicaUsingCpfAndName(Motorista m, String name, Integer cpf)
+    public void insertMotoristaForPessoaFisicaUsingCpfAndName(Motorista m, String name, Long cpf)
     {
-        ClientQueries clientQueries = new ClientQueries(this.em);
-        P_Fisica pfisica = clientQueries.queryPFisicaWithNameAndCpf(name, cpf);
-        m.setCliente(pfisica);
-        this.insertEntity(m);
+        try{
+            ClientQueries clientQueries = new ClientQueries(this.em);
+            Pessoa_Fisica pfisica = clientQueries.queryPFisicaWithNameAndCpf(name, cpf);
+            m.setCliente(pfisica);
+            this.insertEntity(m);
+        }
+        catch (Exception e) {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Não foi possível inserir motorista: " + cause.getMessage() + ".");
+        }
     }
+
+
 
     /* DATABASE INITIAL POPULATION */
     public void populateTables()
     {
-        P_Fisica cliente = new P_Fisica();
+        Pessoa_Fisica cliente = new Pessoa_Fisica();
         cliente.setCod_cliente(1);
         cliente.setNome("Fulano de Tal");
         cliente.setEndereco("Rua Aquela Lá, 1212");
         cliente.setSexo("X");
         cliente.setData_nasc(java.time.LocalDate.now());
-        cliente.setCpf(123142);
+        cliente.setCpf(123142L);
 
-        P_Juridica cliente2 = new P_Juridica();
+        Pessoa_Juridica cliente2 = new Pessoa_Juridica();
         cliente2.setCod_cliente(2);
         cliente2.setNome("Deltrano de Tal");
         cliente2.setEndereco("Rua Aquela Outra, 1313");
-        cliente2.setCnpj(1312412);
-        cliente2.setInscr_estado("A123BACa_13");
+        cliente2.setCnpj(1312412L);
+        cliente2.setInscr_estado(12345643L);
 
         this.insertEntity(cliente);
         this.insertEntity(cliente2);

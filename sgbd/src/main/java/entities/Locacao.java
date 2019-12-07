@@ -24,6 +24,18 @@ public class Locacao {
 
     private LocalDate data_entrega;
 
+
+    public Locacao() {}
+
+    public Locacao(Veiculo veiculo, Filial filial_dest, List<Motorista> motorista, LocalDate data_entrega)
+    {
+        this.veiculo = veiculo;
+        this.filial_dest = filial_dest;
+        this.motorista = motorista;
+        this.data_entrega = data_entrega;
+    }
+
+
     // Getters & Setters
     public Integer getCod_locacao() {
         return cod_locacao;

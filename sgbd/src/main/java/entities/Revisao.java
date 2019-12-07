@@ -14,8 +14,15 @@ public class Revisao {
     @ManyToOne
     @JoinColumn(name = "cod_tipo")
     private Tipo_Veiculo tipo;
-
     private Integer km_media;
+
+    public Revisao() {}
+
+    public Revisao(Tipo_Veiculo tipo, Integer km_media)
+    {
+        this.tipo = tipo;
+        this.km_media = km_media;
+    }
 
     // Getters & Setters
     public Integer getCod_revisao() {

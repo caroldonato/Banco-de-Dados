@@ -22,6 +22,27 @@ public class Tipo_Passageiro extends Tipo_Veiculo {
     @Column(length = 1)
     private boolean cambio_auto;
 
+    public Tipo_Passageiro() {}
+
+    public Tipo_Passageiro(String cod_tipo, Integer horas_limpeza, Integer horas_revisao,
+                           String tamanho, Integer num_lugares, Integer num_portas,
+                           boolean ar_condicionado, boolean radio, boolean mp3, boolean cd,
+                           boolean dir_hidr, boolean cambio_auto)
+    {
+        this.setCod_tipo(cod_tipo);
+        this.setHoras_limpeza(horas_limpeza);
+        this.setHoras_revisao(horas_revisao);
+        this.tamanho = tamanho;
+        this.num_lugares = num_lugares;
+        this.num_portas = num_portas;
+        this.ar_condicionado = ar_condicionado;
+        this.radio = radio;
+        this.mp3 = mp3;
+        this.cd = cd;
+        this.dir_hidr = dir_hidr;
+        this.cambio_auto = cambio_auto;
+    }
+
     // Getters & Setters
     public String getTamanho() {
         return tamanho;
