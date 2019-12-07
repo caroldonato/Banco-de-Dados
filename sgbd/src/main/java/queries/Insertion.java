@@ -1,12 +1,9 @@
 package queries;
 
 import entities.*;
-import org.hibernate.JDBCException;
-import org.postgresql.util.PSQLException;
+import queries.byentity.ClienteQueries;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceException;
-import java.sql.SQLException;
 
 @SuppressWarnings("unused")
 public class Insertion {
@@ -23,7 +20,7 @@ public class Insertion {
         return instance;
     }
 
-    /* INSERTION QUERIES */
+    /* BASIC INSERTION */
 
     public void insertEntity(Object o) // Basic insertion of any persistent object
     {
@@ -32,11 +29,33 @@ public class Insertion {
         em.getTransaction().commit();
     }
 
+    /* DATABASE INITIAL POPULATION */
+    public void populateTables()
+    {
+        Pessoa_Fisica cliente = new Pessoa_Fisica();
+        cliente.setNome("Fulano de Tal");
+        cliente.setEndereco("Rua Aquela Lá, 1212");
+        cliente.setSexo("X");
+        cliente.setData_nasc(java.time.LocalDate.now());
+        cliente.setCpf(123142L);
+
+        Pessoa_Juridica cliente2 = new Pessoa_Juridica();
+        cliente2.setNome("Deltrano de Tal");
+        cliente2.setEndereco("Rua Aquela Outra, 1313");
+        cliente2.setCnpj(1312412L);
+        cliente2.setInscr_estado(12345643L);
+
+        this.insertEntity(cliente);
+        this.insertEntity(cliente2);
+    }
+
+    /* INSERTION QUERIES */
+
     public void insertMotoristaForPessoaFisicaUsingCpfAndName(Motorista m, String name, Long cpf)
     {
         try{
-            ClientQueries clientQueries = new ClientQueries(this.em);
-            Pessoa_Fisica pfisica = clientQueries.queryPFisicaWithNameAndCpf(name, cpf);
+            ClienteQueries clienteQueries = new ClienteQueries(this.em);
+            Pessoa_Fisica pfisica = clienteQueries.queryPFisicaWithNameAndCpf(name, cpf);
             m.setCliente(pfisica);
             this.insertEntity(m);
         }
@@ -47,34 +66,11 @@ public class Insertion {
     }
 
 
-
-    /* DATABASE INITIAL POPULATION */
-    public void populateTables()
-    {
-        Pessoa_Fisica cliente = new Pessoa_Fisica();
-        cliente.setCod_cliente(1);
-        cliente.setNome("Fulano de Tal");
-        cliente.setEndereco("Rua Aquela Lá, 1212");
-        cliente.setSexo("X");
-        cliente.setData_nasc(java.time.LocalDate.now());
-        cliente.setCpf(123142L);
-
-        Pessoa_Juridica cliente2 = new Pessoa_Juridica();
-        cliente2.setCod_cliente(2);
-        cliente2.setNome("Deltrano de Tal");
-        cliente2.setEndereco("Rua Aquela Outra, 1313");
-        cliente2.setCnpj(1312412L);
-        cliente2.setInscr_estado(12345643L);
-
-        this.insertEntity(cliente);
-        this.insertEntity(cliente2);
-    }
-
-
     /* GETTERS & SETTERS */
     public EntityManager getEm() {
         return em;
     }
+
     public void setEm(EntityManager em) {
         this.em = em;
     }

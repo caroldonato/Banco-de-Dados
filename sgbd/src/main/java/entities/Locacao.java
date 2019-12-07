@@ -8,6 +8,7 @@ import java.util.Objects;
 @Entity
 public class Locacao {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer cod_locacao;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -23,7 +24,6 @@ public class Locacao {
     private List<Motorista> motorista;
 
     private LocalDate data_entrega;
-
 
     public Locacao() {}
 

@@ -1,7 +1,5 @@
 package entities;
 
-import queries.ClientQueries;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -9,6 +7,7 @@ import java.util.Objects;
 @Entity
 public class Reserva {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer cod_reserva;
 
     @ManyToOne

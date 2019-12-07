@@ -8,6 +8,7 @@ import java.util.Objects;
 @Table(name = "cliente")
 public class Cliente {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer cod_cliente;
     private String nome;
     private String endereco;
@@ -15,10 +16,6 @@ public class Cliente {
     // Getters & Setters
     public Integer getCod_cliente() {
         return cod_cliente;
-    }
-
-    public void setCod_cliente(Integer cod_cliente) {
-        this.cod_cliente = cod_cliente;
     }
 
     public String getNome() {

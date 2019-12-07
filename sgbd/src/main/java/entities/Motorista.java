@@ -7,6 +7,7 @@ import java.util.Objects;
 @Entity
 public class Motorista {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer cod_motorista;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -16,7 +17,6 @@ public class Motorista {
     private Long num_habili;
     private Long ident_motorista;
     private LocalDate vencimento_habili;
-
 
     public Motorista() { }
 

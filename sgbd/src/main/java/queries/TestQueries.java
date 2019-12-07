@@ -1,7 +1,9 @@
 package queries;
 
-import entities.Motorista;
-import entities.Tipo_Passageiro;
+import entities.*;
+import queries.byentity.ClienteQueries;
+import queries.byentity.FilialQueries;
+import queries.byentity.VehicleTypeQueries;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,43 +17,71 @@ public class TestQueries{
 
         Insertion inserts = new Insertion(entityManager);
         Deletion deletions = new Deletion(entityManager);
-        ClientQueries clientQueries = new ClientQueries(entityManager);
+        ClienteQueries clienteQueries = new ClienteQueries(entityManager);
+        FilialQueries filialQueries = new FilialQueries(entityManager);
+        VehicleTypeQueries vehicleTypeQueries = new VehicleTypeQueries(entityManager);
 
         deletions.clearAllTables();
         inserts.populateTables();
-        clientQueries.sampleQuery();
+        clienteQueries.sampleQuery();
 
         // Testes
 
-        //INSERT INTO Tipo_veiculo
-        // (cod_tipo, horas_limpeza, horas_revisao, tamanho, num_lugares, num_portas,
-        // ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES
-        //('M2', 5, 10, 'M', 5, 4, 'S', 'N', 'N', 'N', 'S', 'S');
+        // INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual, revisao_pendente)
+        // VALUES
+        //('ABC-1234', 'M2', 'Filial1', '123123', '321321', 'Vermelho', 12485, 1);
 
-        Tipo_Passageiro tipo_passageiro = new Tipo_Passageiro();
-        tipo_passageiro.setCod_tipo("M2");
-        tipo_passageiro.setHoras_limpeza(5);
-        tipo_passageiro.setHoras_revisao(10);
-        tipo_passageiro.setTamanho("M");
-        tipo_passageiro.setNum_lugares(5);
-        tipo_passageiro.setNum_portas(4);
-        tipo_passageiro.setAr_condicionado(true);
-        tipo_passageiro.setRadio(false);
-        tipo_passageiro.setMp3(false);
-        tipo_passageiro.setCd(false);
-        tipo_passageiro.setDir_hidr(true);
-        tipo_passageiro.setCambio_auto(true);
+        // Criando coisas que precisa para veiculo
+        Filial filial = new Filial("Filial1", "Pindamonhangaba");
+        inserts.insertEntity(filial);
+        Filial filial2 = new Filial("Filial2", "São Paulo");
+        inserts.insertEntity(filial2);
 
+        Tipo_Passageiro tipo_passageiro = new Tipo_Passageiro("M2", 5, 10,
+                "M", 5, 4, true, false, false, false,
+                true, true);
         inserts.insertEntity(tipo_passageiro);
 
-        // FALHANDO POR ERRO DE CONSTRAINT
-/*        Motorista m = new Motorista();
-        m.setCod_motorista(1);
-        m.setNum_habili(1234567890L);
-        m.setVencimento_habili(LocalDate.of(2020,10,10));
-        m.setIdent_motorista(1234567980L);
+        Pessoa_Juridica pessoa_juridica = new Pessoa_Juridica("Joao S. Imobiliaria", "Endereço do João",
+                18853410000140L, 43243253252L);
 
-        inserts.insertMotoristaForPessoaFisicaUsingCpfAndName(m, "Fulano de Tal", 123142L);*/
+        inserts.insertEntity(pessoa_juridica);
+
+        // Obtendo entidades de query para teste
+
+        Filial filialGot = filialQueries.queryFilialWithCodFilial("Filial1");
+        System.out.println("Resultado Filial: " + filialGot.getLocalizacao());
+
+        Filial filialGot2 = filialQueries.queryFilialWithCodFilial("Filial2");
+        System.out.println("Resultado Filial2: " + filialGot2.getLocalizacao());
+
+        Tipo_Veiculo tipoGot = vehicleTypeQueries.queryTipoVeiculoWithCodTipo("M2");
+        System.out.println("Resultado Tipo: " + tipoGot.getCod_tipo());
+
+        Cliente clienteGot = clienteQueries.queryPJuridicaWithNameAndCnpj("Joao S. Imobiliaria", 18853410000140L);
+
+        // Criando veiculo
+        Veiculo veiculo = new Veiculo("ABC-1234", tipoGot, filialGot, "123123",
+                "321321", "Vermelho", 12485, true, false);
+
+        inserts.insertEntity(veiculo);
+
+        // Criando revisao
+        Revisao revisao = new Revisao(tipoGot, 50000);
+        inserts.insertEntity(revisao);
+
+        // Criando reserva para cliente como pessoa juridica por nome e cnpj
+
+        Reserva reserva = new Reserva(tipoGot, filialGot, filialGot2, clienteGot,
+                LocalDate.of(2020, 11, 15), LocalDate.of(2020, 11, 15));
+
+        inserts.insertEntity(reserva);
+
+        // FALHANDO POR ERRO DE CONSTRAINT
+        Motorista m = new Motorista(clienteGot, 3294324792L, 321312931L, LocalDate.of(2030, 10, 01));
+        inserts.insertEntity(m);
+
+        //inserts.insertMotoristaForPessoaFisicaUsingCpfAndName(m, "Fulano de Tal", 123142L);
 
         entityManager.close();
         entityManagerFactory.close();
