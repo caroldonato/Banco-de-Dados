@@ -10,8 +10,15 @@ public class Filial {
     @Id
     @Column(length = 10)
     private String cod_filial;
-
     private String localizacao;
+
+    public Filial() {}
+
+    public Filial(String cod_filial, String localizacao)
+    {
+        this.cod_filial = cod_filial;
+        this.localizacao = localizacao;
+    }
 
     // Getters & Setters
     public String getCod_filial() {

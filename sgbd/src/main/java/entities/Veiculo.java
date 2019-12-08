@@ -24,9 +24,25 @@ public class Veiculo {
     private String num_motor;
     @Column(length = 20)
     private String cor;
-    private Integer km_atual;
-    @Type(type = "numeric_boolean")
-    private boolean revisao_pendente;
+    private Integer km_atual = 0;
+    private boolean revisao_pendente = false;
+    private boolean parado = true;
+
+    public Veiculo() {}
+
+    public Veiculo(String cod_placa, Tipo_Veiculo tipo, Filial filial_atual, String num_chassi,
+                   String num_motor, String cor, Integer km_atual, boolean revisao_pendente, boolean parado)
+    {
+        this.cod_placa = cod_placa;
+        this.tipo = tipo;
+        this.filial_atual = filial_atual;
+        this.num_chassi = num_chassi;
+        this.num_motor = num_motor;
+        this.cor = cor;
+        this.km_atual = km_atual;
+        this.revisao_pendente = revisao_pendente;
+        this.parado = parado;
+    }
 
     // Getters & Setters
     public String getCod_placa() {
@@ -101,6 +117,10 @@ public class Veiculo {
         this.revisao_pendente = revisao_pendente;
     }
 
+    public boolean isParado() { return parado; }
+
+    public void setParado(boolean parado) { this.parado = parado; }
+
     // Hash and Equals Override
     @Override
     public boolean equals(Object o) {
@@ -114,4 +134,5 @@ public class Veiculo {
     public int hashCode() {
         return Objects.hash(getCod_placa());
     }
+
 }

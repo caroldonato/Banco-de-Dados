@@ -10,17 +10,38 @@ public class Tipo_Passageiro extends Tipo_Veiculo {
     private Integer num_lugares;
     private Integer num_portas;
     @Column(length = 1)
-    private String ar_condicionado;
+    private boolean ar_condicionado;
     @Column(length = 1)
-    private String radio;
+    private boolean radio;
     @Column(length = 1)
-    private String mp3;
+    private boolean mp3;
     @Column(length = 1)
-    private String cd;
+    private boolean cd;
     @Column(length = 1)
-    private String dir_hidr;
+    private boolean dir_hidr;
     @Column(length = 1)
-    private String cambio_auto;
+    private boolean cambio_auto;
+
+    public Tipo_Passageiro() {}
+
+    public Tipo_Passageiro(String cod_tipo, Integer horas_limpeza, Integer horas_revisao,
+                           String tamanho, Integer num_lugares, Integer num_portas,
+                           boolean ar_condicionado, boolean radio, boolean mp3, boolean cd,
+                           boolean dir_hidr, boolean cambio_auto)
+    {
+        this.setCod_tipo(cod_tipo);
+        this.setHoras_limpeza(horas_limpeza);
+        this.setHoras_revisao(horas_revisao);
+        this.tamanho = tamanho;
+        this.num_lugares = num_lugares;
+        this.num_portas = num_portas;
+        this.ar_condicionado = ar_condicionado;
+        this.radio = radio;
+        this.mp3 = mp3;
+        this.cd = cd;
+        this.dir_hidr = dir_hidr;
+        this.cambio_auto = cambio_auto;
+    }
 
     // Getters & Setters
     public String getTamanho() {
@@ -47,51 +68,51 @@ public class Tipo_Passageiro extends Tipo_Veiculo {
         this.num_portas = num_portas;
     }
 
-    public String getAr_condicionado() {
+    public boolean getAr_condicionado() {
         return ar_condicionado;
     }
 
-    public void setAr_condicionado(String ar_condicionado) {
+    public void setAr_condicionado(boolean ar_condicionado) {
         this.ar_condicionado = ar_condicionado;
     }
 
-    public String getRadio() {
+    public boolean getRadio() {
         return radio;
     }
 
-    public void setRadio(String radio) {
+    public void setRadio(boolean radio) {
         this.radio = radio;
     }
 
-    public String getMp3() {
+    public boolean getMp3() {
         return mp3;
     }
 
-    public void setMp3(String mp3) {
+    public void setMp3(boolean mp3) {
         this.mp3 = mp3;
     }
 
-    public String getCd() {
+    public boolean getCd() {
         return cd;
     }
 
-    public void setCd(String cd) {
+    public void setCd(boolean cd) {
         this.cd = cd;
     }
 
-    public String getDir_hidr() {
+    public boolean getDir_hidr() {
         return dir_hidr;
     }
 
-    public void setDir_hidr(String dir_hidr) {
+    public void setDir_hidr(boolean dir_hidr) {
         this.dir_hidr = dir_hidr;
     }
 
-    public String getCambio_auto() {
+    public boolean getCambio_auto() {
         return cambio_auto;
     }
 
-    public void setCambio_auto(String cambio_auto) {
+    public void setCambio_auto(boolean cambio_auto) {
         this.cambio_auto = cambio_auto;
     }
 }

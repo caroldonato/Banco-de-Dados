@@ -7,6 +7,7 @@ import java.util.Objects;
 @Entity
 public class Reserva {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer cod_reserva;
 
     @ManyToOne
@@ -27,6 +28,19 @@ public class Reserva {
 
     private LocalDate data_retirada;
     private LocalDate data_entrega;
+
+    public Reserva() {}
+
+    public Reserva(Tipo_Veiculo tipo, Filial filial_dest, Filial filial_orig, Cliente cliente,
+                   LocalDate data_entrega, LocalDate data_retirada)
+    {
+        this.tipo = tipo;
+        this.filial_dest = filial_dest;
+        this.filial_orig = filial_orig;
+        this.cliente = cliente;
+        this.data_entrega = data_entrega;
+        this.data_retirada = data_retirada;
+    }
 
     // Getters & Setters
     public Integer getCod_reserva() {

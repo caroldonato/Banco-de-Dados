@@ -11,11 +11,11 @@ public class TestQueries{
 
         Insertion inserts = new Insertion(entityManager);
         Deletion deletions = new Deletion(entityManager);
-        ClientQueries clientQueries = new ClientQueries(entityManager);
 
         deletions.clearAllTables();
         inserts.populateTables();
-        clientQueries.sampleQuery();
+
+        // Testes
 
         entityManager.close();
         entityManagerFactory.close();
