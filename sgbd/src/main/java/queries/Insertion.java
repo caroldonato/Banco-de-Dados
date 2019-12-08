@@ -72,7 +72,7 @@ public class Insertion {
 
         // Veículo
         Veiculo veiculo = new Veiculo("ABC-1234", tipo_passageiro , filial, "123123",
-                "321321", "Vermelho", 12485, true, false);
+                "321321", "Vermelho", 12485, true, true);
 
         // Revisão
         Revisao revisao = new Revisao(tipo_passageiro, 50000);

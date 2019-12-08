@@ -16,7 +16,7 @@ public class Veiculo {
 
     @ManyToOne
     @JoinColumn(name = "cod_filial_atual")
-    private Filial filial_atual;
+    private Filial cod_filial_atual;
 
     @Column(length = 10)
     private String num_chassi;
@@ -35,7 +35,7 @@ public class Veiculo {
     {
         this.cod_placa = cod_placa;
         this.tipo = tipo;
-        this.filial_atual = filial_atual;
+        this.cod_filial_atual = filial_atual;
         this.num_chassi = num_chassi;
         this.num_motor = num_motor;
         this.cor = cor;
@@ -65,17 +65,9 @@ public class Veiculo {
         this.tipo = tipo;
     }
 
-    public Filial getFilial_atual() {
-        return filial_atual;
-    }
+    public Filial getCod_filial_atual() { return cod_filial_atual; }
 
-    public String getCod_filial_atual() {
-        return filial_atual.getCod_filial();
-    }
-
-    public void setFilial_atual(Filial filial_atual) {
-        this.filial_atual = filial_atual;
-    }
+    public void setCod_filial_atual(Filial cod_filial_atual) { this.cod_filial_atual = cod_filial_atual; }
 
     public String getNum_chassi() {
         return num_chassi;

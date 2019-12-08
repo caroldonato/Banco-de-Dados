@@ -3,6 +3,8 @@ package queries.byentity;
 import entities.Veiculo;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.time.LocalDate;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class VehicleQueries {
@@ -34,6 +36,32 @@ public class VehicleQueries {
         typedQuery.setParameter("cod_placa", cod_placa);
 
         return typedQuery.getSingleResult();
+    }
+
+    public List<Veiculo> queryVeiculosDisponiveisWithCodFilial(String cod_filial)
+    {
+        String jpql = "SELECT v FROM Veiculo v, Filial f WHERE " +
+                      "v.cod_filial_atual = f.cod_filial AND " +
+                      "f.cod_filial = :cod_filial AND " +
+                      "v.parado = true";
+        TypedQuery<Veiculo> typedQuery = em.createQuery(jpql, Veiculo.class);
+        typedQuery.setParameter("cod_filial", cod_filial);
+
+        return typedQuery.getResultList();
+    }
+
+    public List<Object[]> queryVeiculosAlugadosAndEntregaWithCodFilial(String cod_filial)
+    {
+        String jpql = "SELECT v.cod_placa, v.cod_filial_atual, l.cod_filial_dest, l.data_entrega FROM " +
+                      "Veiculo v JOIN " +
+                      "locacoes_recentes l ON v.cod_placa = l.cod_placa WHERE " +
+                      "l.data_entrega < :data_atual AND v.cod_filial_atual = :cod_filial";
+
+        TypedQuery<Object[]> typedQuery = em.createQuery(jpql, Object[].class);
+        typedQuery.setParameter("data_atual", LocalDate.now());
+        typedQuery.setParameter("cod_filial", cod_filial);
+
+        return typedQuery.getResultList();
     }
 
     // ========================================================================

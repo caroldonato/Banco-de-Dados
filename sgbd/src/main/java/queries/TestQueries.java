@@ -1,5 +1,8 @@
 package queries;
 
+import queries.byentity.VehicleQueries;
+import views.LocacoesRecentes;
+
 import javax.persistence.*;
 
 public class TestQueries{
@@ -14,6 +17,7 @@ public class TestQueries{
 
         deletions.clearAllTables();
         inserts.populateTables();
+        VehicleQueries vehicleQueries = new VehicleQueries(entityManager);
 
         // Testes
 

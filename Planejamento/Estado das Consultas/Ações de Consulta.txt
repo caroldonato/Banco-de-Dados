@@ -1,0 +1,26 @@
+-- Consultar os veículos disponíveis em determinada filial na data corrente.
+	-- Ou seja, os veiculos no dia atual que estão parados.
+	SELECT cod_placa
+	FROM Veiculo
+	WHERE cod_filial_atual = 'Filial' AND parado = 1;
+
+======================================> OK (Modificação -> Retorna veículos, não placas)
+
+-- Consultar os veículos presentemente alugados pela filial, o ponto de entrega (caso seja diferente do de locação) e data de entrega prevista.
+	SELECT cod_placa, cod_filial_atual, cod_filial_dest, data_entrega
+	FROM Veiculo JOIN locacoes_recentes ON Veiculo.cod_placa = locacoes_recentes.cod_placa
+	WHERE data_entrega < 'Dia atual' AND cod_filial_atual = 'Filial analisada'
+
+======================================> 
+
+-- Fazer reserva
+	INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES
+	('M2', 'Filial1', 'Filial2', 163, '2020-10-10', '2020-10-20');
+
+======================================> OK
+
+-- Fazer locação
+	INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES
+	('ABC-1234', 'Filial2', 53, '2020-10-20');
+
+======================================> OK
