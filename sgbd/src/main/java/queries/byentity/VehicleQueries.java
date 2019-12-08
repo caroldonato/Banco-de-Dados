@@ -52,16 +52,23 @@ public class VehicleQueries {
 
     public List<Object[]> queryVeiculosAlugadosAndEntregaWithCodFilial(String cod_filial)
     {
-        String jpql = "SELECT v.cod_placa, v.cod_filial_atual, l.cod_filial_dest, l.data_entrega FROM " +
+        String jpql = "SELECT v.cod_placa, v.cod_filial_atual, l.filial_dest, l.data_entrega FROM " +
                       "Veiculo v JOIN " +
-                      "locacoes_recentes l ON v.cod_placa = l.cod_placa WHERE " +
-                      "l.data_entrega < :data_atual AND v.cod_filial_atual = :cod_filial";
+                      "LocacoesRecentes l ON v.cod_placa = l.veiculo.cod_placa WHERE " +
+                      "l.data_entrega < :data_atual AND v.cod_filial_atual.cod_filial = :cod_filial";
 
         TypedQuery<Object[]> typedQuery = em.createQuery(jpql, Object[].class);
         typedQuery.setParameter("data_atual", LocalDate.now());
         typedQuery.setParameter("cod_filial", cod_filial);
 
         return typedQuery.getResultList();
+
+        // Exemplo de como acessar resultados
+/*        List<Object[]> vehicles = vehicleQueries.queryVeiculosAlugadosAndEntregaWithCodFilial("Filial1");
+        vehicles.forEach(v -> System.out.println("Cod placa: " + v[0] +
+                " | Filial atual: " + v[1] +
+                " | Filial destino: " + v[2] +
+                " | Data entrega: " + v[3]));*/
     }
 
     // ========================================================================

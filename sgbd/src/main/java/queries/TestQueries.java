@@ -1,9 +1,9 @@
 package queries;
 
 import queries.byentity.VehicleQueries;
-import views.LocacoesRecentes;
 
 import javax.persistence.*;
+import java.util.List;
 
 public class TestQueries{
     public static void main(String[] args) {
@@ -20,6 +20,7 @@ public class TestQueries{
         VehicleQueries vehicleQueries = new VehicleQueries(entityManager);
 
         // Testes
+
 
         entityManager.close();
         entityManagerFactory.close();
