@@ -11,14 +11,14 @@ public class Revisao {
 
     @ManyToOne
     @JoinColumn(name = "cod_tipo")
-    private Tipo_Veiculo tipo;
+    private Tipo_Veiculo cod_tipo;
     private Integer km_media;
 
     public Revisao() {}
 
     public Revisao(Tipo_Veiculo tipo, Integer km_media)
     {
-        this.tipo = tipo;
+        this.cod_tipo = tipo;
         this.km_media = km_media;
     }
 
@@ -31,12 +31,12 @@ public class Revisao {
         this.cod_revisao = cod_revisao;
     }
 
-    public Tipo_Veiculo get_tipo() {
-        return tipo;
+    public Tipo_Veiculo get_codtipo() {
+        return cod_tipo;
     }
 
-    public void set_tipo(Tipo_Veiculo tipo) {
-        this.tipo = tipo;
+    public void set_codtipo(Tipo_Veiculo tipo) {
+        this.cod_tipo = tipo;
     }
 
     public Integer getKm_media() {

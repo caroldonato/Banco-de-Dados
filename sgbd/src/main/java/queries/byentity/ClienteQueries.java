@@ -37,7 +37,7 @@ public class ClienteQueries {
         return typedQuery.getSingleResult();
     }
 
-    public Pessoa_Fisica queryPFisicaWithCodCliente(String cod_cliente)
+    public Pessoa_Fisica queryPessoaFisicaWithCodCliente(String cod_cliente)
     {
         String jpql = "SELECT f FROM Pessoa_Fisica f, Cliente c WHERE f.cod_cliente = c.cod_cliente " +
                       "AND c.cod_cliente = :cod_cliente";
@@ -48,7 +48,7 @@ public class ClienteQueries {
         return typedQuery.getSingleResult();
     }
 
-    public Pessoa_Juridica queryPJuridicaWithCodCliente(String cod_cliente)
+    public Pessoa_Juridica queryPessoaJuridicaWithCodCliente(String cod_cliente)
     {
         String jpql = "SELECT j FROM Pessoa_Juridica j, Cliente c WHERE j.cod_cliente = c.cod_cliente " +
                       "AND c.cod_cliente = :cod_cliente";
@@ -61,7 +61,7 @@ public class ClienteQueries {
 
    // ---------------------------------------------------------------------
 
-    public Pessoa_Fisica queryPFisicaWithNameAndCpf(String name, Long cpf)
+    public Pessoa_Fisica queryPessoaFisicaWithNameAndCpf(String name, Long cpf)
     {
         String jpql = "SELECT f FROM Pessoa_Fisica f, Cliente c WHERE f.cod_cliente = c.cod_cliente " +
                       "AND c.nome = :nome AND f.cpf = :cpf";
@@ -73,7 +73,7 @@ public class ClienteQueries {
         return typedQuery.getSingleResult();
     }
 
-    public Pessoa_Juridica queryPJuridicaWithNameAndCnpj(String name, Long cnpj)
+    public Pessoa_Juridica queryPessoaJuridicaWithNameAndCnpj(String name, Long cnpj)
     {
         String jpql = "SELECT j FROM Pessoa_Juridica j, Cliente c WHERE j.cod_cliente = c.cod_cliente " +
                 "AND c.nome = :nome AND j.cnpj = :cnpj";

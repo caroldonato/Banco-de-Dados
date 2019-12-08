@@ -2,7 +2,6 @@ package entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,15 +18,15 @@ public class Locacao {
     @JoinColumn(name = "cod_filial_dest")
     private Filial filial_dest;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cod_motorista")
-    private List<Motorista> motorista;
+    private Motorista motorista;
 
     private LocalDate data_entrega;
 
     public Locacao() {}
 
-    public Locacao(Veiculo veiculo, Filial filial_dest, List<Motorista> motorista, LocalDate data_entrega)
+    public Locacao(Veiculo veiculo, Filial filial_dest, Motorista motorista, LocalDate data_entrega)
     {
         this.veiculo = veiculo;
         this.filial_dest = filial_dest;
@@ -69,11 +68,11 @@ public class Locacao {
         this.filial_dest = filial_dest;
     }
 
-    public List<Motorista> getMotorista() {
+    public Motorista getMotorista() {
         return motorista;
     }
 
-    public void setMotorista(List<Motorista> motorista) {
+    public void setMotorista(Motorista motorista) {
         this.motorista = motorista;
     }
 

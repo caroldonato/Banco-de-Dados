@@ -14,7 +14,7 @@ INSERT INTO Cliente(nome, endereco, cnpj, inscr_estado) VALUES
 INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES
 ((SELECT cod_cliente FROM Cliente WHERE nome = "Joao Silva" AND cpf = 11122233344), 12345678900, 2020-10-10, 1234567980);
 
-======================================> NÃO FUNCIONAL
+======================================> OK
 
 -- Inserir tipo de veículo de passageiro
 INSERT INTO Tipo_veiculo(cod_tipo, horas_limpeza, horas_revisao, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES
@@ -53,6 +53,8 @@ INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, dat
     FROM Cliente
     WHERE nome = 'Joao S. Imobiliaria' AND cnpj = 18853410000140
 ), 2020-10-10, 2020-11-15);
+
+======================================> OK
 
 ======================================> OK
 

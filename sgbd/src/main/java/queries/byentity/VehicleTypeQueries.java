@@ -3,8 +3,8 @@ package queries.byentity;
 import entities.*;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.util.List;
 
+@SuppressWarnings("unused")
 public class VehicleTypeQueries {
     private EntityManager em;
     private static VehicleTypeQueries instance = null;
