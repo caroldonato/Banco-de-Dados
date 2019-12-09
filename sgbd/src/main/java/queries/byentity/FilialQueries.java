@@ -27,6 +27,13 @@ public class FilialQueries {
     /* FILIAL QUERIES */
     // ========================================================================
 
+    public List<Filial> queryAllFiliais()
+    {
+        String jpql = "SELECT f FROM Filial";
+        TypedQuery<Filial> typedQuery = em.createQuery(jpql, Filial.class);
+        return typedQuery.getResultList();
+    }
+
     public Filial queryFilialWithCodFilial(String cod_filial)
     {
         String jpql = "SELECT f FROM Filial f WHERE f.cod_filial = :cod_filial";

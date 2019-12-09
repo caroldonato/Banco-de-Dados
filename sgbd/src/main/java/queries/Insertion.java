@@ -56,7 +56,7 @@ public class Insertion {
         // Clientes
 
         Pessoa_Fisica pessoa_fisica = new Pessoa_Fisica("Fulano de Tal", "Rua Aquela Lá, 1212",
-                "X", LocalDate.of(1990, 5, 21), 123142L);
+                "X", LocalDate.of(2000, 5, 21), 123142L);
         Pessoa_Juridica pessoa_juridica = new Pessoa_Juridica("Deltrano de Tal",
                 "Rua Aquela Outra, 1313",1312412L,12345643L);
 
@@ -70,9 +70,14 @@ public class Insertion {
                 "M", 5, 4, true, false, false, false,
                 true, true);
 
+        Tipo_Carga tipo_carga = new Tipo_Carga("G2", 5, 10, 500);
+
         // Veículo
-        Veiculo veiculo = new Veiculo("ABC-1234", tipo_passageiro , filial, "123123",
-                "321321", "Vermelho", 12485, true, true);
+        Veiculo veiculo = new Veiculo("ABC-1234", tipo_passageiro, filial, "123123",
+                "321321", "Vermelho", 12485, true, false);
+
+        Veiculo veiculo2 = new Veiculo("DBE-5678", tipo_carga, filial2, "123435",
+                "3453161", "Preto", 100000, true, false);
 
         // Revisão
         Revisao revisao = new Revisao(tipo_passageiro, 50000);
@@ -93,8 +98,10 @@ public class Insertion {
         objects.add(pessoa_juridica);
         objects.add(filial);
         objects.add(filial2);
+        objects.add(tipo_carga);
         objects.add(tipo_passageiro);
         objects.add(veiculo);
+        objects.add(veiculo2);
         objects.add(revisao);
         objects.add(reserva);
         objects.add(motorista);

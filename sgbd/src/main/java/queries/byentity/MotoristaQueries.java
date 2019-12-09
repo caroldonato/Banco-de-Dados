@@ -5,6 +5,8 @@ import entities.Motorista;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.time.LocalDate;
+import java.util.List;
 
 public class MotoristaQueries {
     private EntityManager em;
@@ -27,6 +29,13 @@ public class MotoristaQueries {
     /* MOTORISTA QUERIES */
     // ========================================================================
 
+    public List<Motorista> queryAllMotoristas()
+    {
+        String jpql = "SELECT m FROM Motorista m";
+        TypedQuery<Motorista> typedQuery = em.createQuery(jpql, Motorista.class);
+        return typedQuery.getResultList();
+    }
+
     public Motorista queryMotoristaWithNumHab(Long num_hab)
     {
         String jpql = "SELECT m FROM Motorista m WHERE m.num_habili = :num_hab";
@@ -34,6 +43,15 @@ public class MotoristaQueries {
         typedQuery.setParameter("num_hab", num_hab);
 
         return typedQuery.getSingleResult();
+    }
+
+    public List<Motorista> queryMotoristasWithHabilitacaoVencida()
+    {
+        LocalDate data = LocalDate.now();
+        String jpql = "SELECT m FROM Motorista m WHERE m.vencimento_habili <= :data";
+        TypedQuery<Motorista> typedQuery = em.createQuery(jpql, Motorista.class);
+        typedQuery.setParameter("data", data);
+        return typedQuery.getResultList();
     }
 
     // ========================================================================

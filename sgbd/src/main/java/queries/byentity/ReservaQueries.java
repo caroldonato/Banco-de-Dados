@@ -5,6 +5,7 @@ import entities.Reserva;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class ReservaQueries {
 
@@ -27,6 +28,13 @@ public class ReservaQueries {
     // ========================================================================
     /* RESERVA QUERIES */
     // ========================================================================
+
+    public List<Reserva> queryAllReservas()
+    {
+        String jpql = "SELECT r FROM Reserva r";
+        TypedQuery<Reserva> typedQuery = em.createQuery(jpql, Reserva.class);
+        return typedQuery.getResultList();
+    }
 
     public Reserva queryReservaWithCodReserva(Integer cod_reserva)
     {

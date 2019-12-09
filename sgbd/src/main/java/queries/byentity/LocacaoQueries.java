@@ -1,9 +1,11 @@
 package queries.byentity;
 
 import entities.Locacao;
+import views.LocacoesRecentes;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class LocacaoQueries {
@@ -27,6 +29,13 @@ public class LocacaoQueries {
     // ========================================================================
     /* LOCACAO QUERIES */
     // ========================================================================
+
+    public List<Locacao> queryAllLocacoes()
+    {
+        String jpql = "SELECT l FROM Locacao l";
+        TypedQuery<Locacao> typedQuery = em.createQuery(jpql, Locacao.class);
+        return typedQuery.getResultList();
+    }
 
     public Locacao queryLocacaoWithCodLocacao(Integer cod_locacao)
     {

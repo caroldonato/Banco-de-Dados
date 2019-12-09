@@ -29,6 +29,22 @@ public class VehicleQueries {
     /* VEHICLE QUERIES */
     // ========================================================================
 
+    public List<Veiculo> queryAllVeiculos()
+    {
+        String jpql = "SELECT v FROM Veiculo v";
+        TypedQuery<Veiculo> typedQuery = em.createQuery(jpql, Veiculo.class);
+        return typedQuery.getResultList();
+    }
+
+    public List<Object[]> queryAllVeiculosAndTipo()
+    {
+        String jpql = "SELECT v.cod_placa, v.tipo.cod_tipo, v.cod_filial_atual, v.num_chassi, v.num_motor, " +
+                      "v.cor, v.km_atual, v.revisao_pendente, v.parado, t.horas_limpeza, t.horas_revisao " +
+                      "FROM Veiculo v JOIN Tipo_Veiculo t ON v.tipo.cod_tipo = t.cod_tipo";
+        TypedQuery<Object[]> typedQuery = em.createQuery(jpql, Object[].class);
+        return typedQuery.getResultList();
+    }
+
     public Veiculo queryVeiculoWithCodPlaca(String cod_placa)
     {
         String jpql = "SELECT v FROM Veiculo v WHERE v.cod_placa = :cod_placa";
@@ -36,6 +52,53 @@ public class VehicleQueries {
         typedQuery.setParameter("cod_placa", cod_placa);
 
         return typedQuery.getSingleResult();
+    }
+
+    public Object[] queryVeiculoHorasLimpezaAndHorasRevisaoWithCodPlaca(String cod_placa)
+    {
+        String jpql = "SELECT v.tipo.horas_limpeza, v.tipo.horas_revisao FROM Veiculo v" +
+                      " WHERE v.cod_placa = :cod_placa";
+        TypedQuery<Object[]> typedQuery = em.createQuery(jpql, Object[].class);
+        typedQuery.setParameter("cod_placa", cod_placa);
+        return typedQuery.getSingleResult();
+    }
+
+    public Object[] queryVeiculoAndTipoWithCodPlaca(String cod_placa)
+    {
+        String jpql = "SELECT v.cod_placa, v.tipo.cod_tipo, v.cod_filial_atual, v.num_chassi, v.num_motor, " +
+                "v.cor, v.km_atual, v.revisao_pendente, v.parado, t.horas_limpeza, t.horas_revisao " +
+                "FROM Veiculo v JOIN Tipo_Veiculo t ON v.tipo.cod_tipo = t.cod_tipo " +
+                "WHERE v.cod_placa = :cod_placa";
+
+        TypedQuery<Object[]> typedQuery = em.createQuery(jpql, Object[].class);
+        typedQuery.setParameter("cod_placa", cod_placa);
+        return typedQuery.getSingleResult();
+    }
+
+    public List<Veiculo> queryVeiculosWithCor(String cor)
+    {
+        String jpql = "SELECT v FROM Veiculo v WHERE v.cor = :cor";
+        TypedQuery<Veiculo> typedQuery = em.createQuery(jpql, Veiculo.class);
+        typedQuery.setParameter("cor", cor);
+        return typedQuery.getResultList();
+    }
+
+    public List<Veiculo> queryVeiculosUnderKm(Integer km)
+    {
+        String jpql = "SELECT v FROM Veiculo v WHERE v.km_atual < :km";
+        TypedQuery<Veiculo> typedQuery = em.createQuery(jpql, Veiculo.class);
+        typedQuery.setParameter("km", km);
+        return typedQuery.getResultList();
+    }
+
+    public List<Veiculo> queryVeiculosDisponiveis()
+    {
+        String jpql = "SELECT v FROM Veiculo v LEFT JOIN Locacao l ON" +
+                      " v.cod_placa = l.veiculo.cod_placa" +
+                      " WHERE l.cod_locacao IS NULL";
+
+        TypedQuery<Veiculo> typedQuery = em.createQuery(jpql, Veiculo.class);
+        return typedQuery.getResultList();
     }
 
     public List<Veiculo> queryVeiculosDisponiveisWithCodFilial(String cod_filial)
