@@ -1,14 +1,7 @@
 package queries;
 
-import entities.Pessoa_Fisica;
-import entities.Pessoa_Juridica;
-import entities.Veiculo;
-import org.postgresql.util.PSQLException;
 import queries.byentity.*;
-
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import java.lang.reflect.Type;
 
 @SuppressWarnings("unused")
 public class Deletion {
@@ -31,6 +24,9 @@ public class Deletion {
     /* BASIC DELETION */
     // ========================================================================
 
+    /*
+    ! Remove qualquer objeto persistente do banco de dados.
+     */
     public void deleteEntity(Object o)// Basic deletion of persistent object
     {
         em.getTransaction().begin();
@@ -42,6 +38,9 @@ public class Deletion {
     /* CLEAN DATABASE */
     // ========================================================================
 
+    /*
+    ! Apaga todos os dados de todas as tabelas do banco de dados.
+     */
     public void clearAllTables()
     {
         em.getTransaction().begin();
@@ -64,6 +63,9 @@ public class Deletion {
     /* DELETION QUERIES */
     // ========================================================================
 
+    /*
+    ! Remove pessoa física definida por nome e CPF fornecidos.
+     */
     public void removePessoaFisicaWithNomeAndCpf(String name, Long cpf)
     {
         ClienteQueries clienteQueries = new ClienteQueries(this.em);
@@ -78,6 +80,9 @@ public class Deletion {
         }
     }
 
+    /*
+    ! Remove pessoa jurídica definida por nome e CNPJ fornecidos.
+     */
     public void removePessoaJuridicaWithNomeAndCnpj(String name, Long cnpj)
     {
         ClienteQueries clienteQueries = new ClienteQueries(this.em);
@@ -92,6 +97,9 @@ public class Deletion {
         }
     }
 
+    /*
+    ! Remove veículo definido por código de placa fornecido.
+     */
     public void removeVeiculoWithCodPlaca(String cod_placa)
     {
         VehicleQueries vehicleQueries = new VehicleQueries(this.em);
@@ -107,6 +115,9 @@ public class Deletion {
         }
     }
 
+    /*
+    ! Remove filial definida por código de filial fornecido.
+     */
     public void removeFilialWithCodFilial(String cod_filial)
     {
         FilialQueries filialQueries = new FilialQueries(this.em);
@@ -122,6 +133,9 @@ public class Deletion {
         }
     }
 
+    /*
+    ! Remove motorista definido por número de habilitação fornecido.
+     */
     public void removeMotoristaWithNumHab(Long num_hab)
     {
         MotoristaQueries motoristaQueries = new MotoristaQueries(this.em);
@@ -137,6 +151,9 @@ public class Deletion {
         }
     }
 
+    /*
+    ! Remove tipo de veículo definido por código de tipo fornecido.
+     */
     public void removeTipoVeiculoWithCodTipo(String cod_tipo)
     {
         VehicleTypeQueries vehicleTypeQueries = new VehicleTypeQueries(this.em);
@@ -152,6 +169,9 @@ public class Deletion {
         }
     }
 
+    /*
+    ! Remove rervisão definida por código de revisão e código de tipo fornecidos.
+     */
     public void removeRevisaoWithCodTipoAndCodRevisao(String cod_tipo, Integer cod_revisao)
     {
         RevisaoQueries revisaoQueries = new RevisaoQueries(this.em);
@@ -166,6 +186,9 @@ public class Deletion {
         }
     }
 
+    /*
+    ! Remove reserva definida por código de reserva fornecido.
+     */
     public void removeReservaWithCodReserva(Integer cod_reserva)
     {
         ReservaQueries reservaQueries = new ReservaQueries(this.em);
@@ -180,6 +203,9 @@ public class Deletion {
         }
     }
 
+    /*
+    ! Remove locação definida por código de locação fornecido.
+     */
     public void removeLocacaoWithCodLocacao(Integer cod_locacao)
     {
         LocacaoQueries locacaoQueries = new LocacaoQueries(this.em);

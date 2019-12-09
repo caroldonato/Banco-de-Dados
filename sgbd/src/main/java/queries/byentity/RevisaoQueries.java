@@ -3,6 +3,7 @@ package queries.byentity;
 import entities.Revisao;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class RevisaoQueries {
 
@@ -26,6 +27,19 @@ public class RevisaoQueries {
     /* REVISAO QUERIES */
     // ========================================================================
 
+    /*
+    ! Consulta todas as revisões registradas no banco de dados.
+     */
+    public List<Revisao> queryAllRevisoes()
+    {
+        String jpql = "SELECT r FROM Revisao r";
+        TypedQuery<Revisao> typedQuery = em.createQuery(jpql, Revisao.class);
+        return typedQuery.getResultList();
+    }
+
+    /*
+    ! Consulta revisão de código de revisão e código de tipo especificados.
+     */
     public Revisao queryRevisaoWithCodTipoAndCodRevisao(String cod_tipo, Integer cod_revisao)
     {
         String jpql = "SELECT r FROM Revisao r, Tipo_Veiculo t WHERE " +
