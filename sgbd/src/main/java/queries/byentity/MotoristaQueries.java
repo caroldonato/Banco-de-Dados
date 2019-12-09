@@ -1,8 +1,6 @@
 package queries.byentity;
 
-import entities.Filial;
 import entities.Motorista;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.time.LocalDate;
@@ -29,6 +27,9 @@ public class MotoristaQueries {
     /* MOTORISTA QUERIES */
     // ========================================================================
 
+    /*
+    ! Consulta todos os motoristas do banco de dados.
+     */
     public List<Motorista> queryAllMotoristas()
     {
         String jpql = "SELECT m FROM Motorista m";
@@ -36,6 +37,20 @@ public class MotoristaQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta motorista de código de motorista especificado.
+     */
+    public Motorista queryMotoristaWithCodMotorista(Integer cod_motorista)
+    {
+        String jpql = "SELECT m FROM Motorista m WHERE m.cod_motorista = :cod_motorista";
+        TypedQuery<Motorista> typedQuery = em.createQuery(jpql, Motorista.class);
+        typedQuery.setParameter("cod_motorista", cod_motorista);
+        return typedQuery.getSingleResult();
+    }
+
+    /*
+    ! Consulta motorista de número de habilitação especificado.
+     */
     public Motorista queryMotoristaWithNumHab(Long num_hab)
     {
         String jpql = "SELECT m FROM Motorista m WHERE m.num_habili = :num_hab";
@@ -45,6 +60,9 @@ public class MotoristaQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta de todos os motoristas com carteira de habilitação vencida.
+     */
     public List<Motorista> queryMotoristasWithHabilitacaoVencida()
     {
         LocalDate data = LocalDate.now();

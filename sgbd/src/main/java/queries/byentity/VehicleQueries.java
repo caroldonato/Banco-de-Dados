@@ -29,6 +29,9 @@ public class VehicleQueries {
     /* VEHICLE QUERIES */
     // ========================================================================
 
+    /*
+    ! Consulta todos os veículos registrados no banco de dados.
+     */
     public List<Veiculo> queryAllVeiculos()
     {
         String jpql = "SELECT v FROM Veiculo v";
@@ -36,6 +39,9 @@ public class VehicleQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta todos os veículos e dados dos seus tipos correspondentes.
+     */
     public List<Object[]> queryAllVeiculosAndTipo()
     {
         String jpql = "SELECT v.cod_placa, v.tipo.cod_tipo, v.cod_filial_atual, v.num_chassi, v.num_motor, " +
@@ -45,6 +51,9 @@ public class VehicleQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta veículo de código de placa especificado.
+     */
     public Veiculo queryVeiculoWithCodPlaca(String cod_placa)
     {
         String jpql = "SELECT v FROM Veiculo v WHERE v.cod_placa = :cod_placa";
@@ -54,6 +63,9 @@ public class VehicleQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta tempo de limpeza e de revisão de veículo de código de placa especificado.
+     */
     public Object[] queryVeiculoHorasLimpezaAndHorasRevisaoWithCodPlaca(String cod_placa)
     {
         String jpql = "SELECT v.tipo.horas_limpeza, v.tipo.horas_revisao FROM Veiculo v" +
@@ -63,6 +75,9 @@ public class VehicleQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta dados de veículo de placa especificada.
+    */
     public Object[] queryVeiculoAndTipoWithCodPlaca(String cod_placa)
     {
         String jpql = "SELECT v.cod_placa, v.tipo.cod_tipo, v.cod_filial_atual, v.num_chassi, v.num_motor, " +
@@ -75,6 +90,9 @@ public class VehicleQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta todos os veículos com a cor especificada.
+    */
     public List<Veiculo> queryVeiculosWithCor(String cor)
     {
         String jpql = "SELECT v FROM Veiculo v WHERE v.cor = :cor";
@@ -83,6 +101,9 @@ public class VehicleQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta todos os veículos com quilometragem abaixo da especificada.
+    */
     public List<Veiculo> queryVeiculosUnderKm(Integer km)
     {
         String jpql = "SELECT v FROM Veiculo v WHERE v.km_atual < :km";
@@ -91,6 +112,9 @@ public class VehicleQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta todos os veículos sem locações associadas.
+     */
     public List<Veiculo> queryVeiculosDisponiveis()
     {
         String jpql = "SELECT v FROM Veiculo v LEFT JOIN Locacao l ON" +
@@ -101,6 +125,9 @@ public class VehicleQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta os veículos disponíveis em determinada filial na data corrente.
+     */
     public List<Veiculo> queryVeiculosDisponiveisWithCodFilial(String cod_filial)
     {
         String jpql = "SELECT v FROM Veiculo v, Filial f WHERE " +
@@ -113,6 +140,10 @@ public class VehicleQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta os veículos presentemente alugados pela filial, o ponto de entrega
+      (caso seja diferente do de locação) e data de entrega prevista.
+    */
     public List<Object[]> queryVeiculosAlugadosAndEntregaWithCodFilial(String cod_filial)
     {
         String jpql = "SELECT v.cod_placa, v.cod_filial_atual, l.filial_dest, l.data_entrega FROM " +

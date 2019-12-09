@@ -30,6 +30,9 @@ public class ClienteQueries {
     /* CLIENT QUERIES */
     // ========================================================================
 
+    /*
+    ! Consulta todos os clientes do banco de dados.
+     */
     public List<Cliente> queryAllClientes()
     {
         String jpql = "SELECT c FROM Cliente";
@@ -37,6 +40,9 @@ public class ClienteQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta cliente utilizando código de cliente especificado.
+     */
     public Cliente queryClienteWithCodCliente(String cod_cliente)
     {
         String jpql = "SELECT c FROM Cliente WHERE c.cod_cliente = :cod_cliente";
@@ -46,6 +52,9 @@ public class ClienteQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta cliente de tipo pessoa física e seus dados utilizando código de cliente.
+     */
     public Pessoa_Fisica queryPessoaFisicaWithCodCliente(String cod_cliente)
     {
         String jpql = "SELECT f FROM Pessoa_Fisica f, Cliente c WHERE f.cod_cliente = c.cod_cliente " +
@@ -57,6 +66,9 @@ public class ClienteQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta cliente de tipo pessoa jurídica e seus dados utilizando código de cliente.
+     */
     public Pessoa_Juridica queryPessoaJuridicaWithCodCliente(String cod_cliente)
     {
         String jpql = "SELECT j FROM Pessoa_Juridica j, Cliente c WHERE j.cod_cliente = c.cod_cliente " +
@@ -68,6 +80,9 @@ public class ClienteQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta todos os clientes que possuem locação de veículos de carga registradas.
+     */
     public List<Cliente> queryClientesComLocacaoDeTipoCarga()
     {
         String jpql = "SELECT DISTINCT c FROM" +
@@ -80,6 +95,9 @@ public class ClienteQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta todos os clientes que possuem alguma reserva em seu nome.
+     */
     public List<Cliente> queryClientesComReservas()
     {
         String jpql = "SELECT DISTINCT c FROM Cliente c JOIN ReservasRecentes r" +
@@ -88,6 +106,9 @@ public class ClienteQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta cliente que possui a locação do veículo de código de placa especificado.
+     */
     public Cliente queryClienteComLocacaoWithCodPlaca(String cod_placa)
     {
         String jpql = "SELECT c FROM LocacoesRecentes l" +
@@ -101,6 +122,9 @@ public class ClienteQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta cliente de tipo pessoa física utilizando nome e CPF.
+     */
     public Pessoa_Fisica queryPessoaFisicaWithNameAndCpf(String name, Long cpf)
     {
         String jpql = "SELECT f FROM Pessoa_Fisica f, Cliente c WHERE f.cod_cliente = c.cod_cliente " +
@@ -113,6 +137,9 @@ public class ClienteQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta cliente de tipo pessoa jurídica utilizando nome e CNPJ.
+     */
     public Pessoa_Juridica queryPessoaJuridicaWithNameAndCnpj(String name, Long cnpj)
     {
         String jpql = "SELECT j FROM Pessoa_Juridica j, Cliente c WHERE j.cod_cliente = c.cod_cliente " +
@@ -125,6 +152,9 @@ public class ClienteQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta todas as pessoas físicas nascidas após ano especificado.
+     */
     public List<Pessoa_Fisica> queryPessoaFisicaNascidaDepoisDeAno(Integer ano)
     {
         LocalDate data = LocalDate.of(ano, 1, 1);
@@ -134,20 +164,10 @@ public class ClienteQueries {
         return typedQuery.getResultList();
     }
 
-    // ========================================================================
-    public void sampleQuery()
-    {
-        String jpql = "select f from Pessoa_Fisica f";
-        TypedQuery<Pessoa_Fisica> typedQuery = em.createQuery(jpql, Pessoa_Fisica.class);
-        List<Pessoa_Fisica> result = typedQuery.getResultList();
-        result.forEach(f -> System.out.println("Código: " + f.getCod_cliente() + " | Nome : " +
-                f.getNome() + " | Endereço: " + f.getEndereco()));
-    }
 
     // ========================================================================
     /* GETTERS & SETTERS */
     // ========================================================================
-
 
     public EntityManager getEm() {
         return em;
@@ -155,4 +175,5 @@ public class ClienteQueries {
     public void setEm(EntityManager em) {
         this.em = em;
     }
+
 }

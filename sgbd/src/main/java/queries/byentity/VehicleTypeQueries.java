@@ -27,6 +27,9 @@ public class VehicleTypeQueries {
     /* VEHICLE TYPE QUERIES */
     // ========================================================================
 
+    /*
+    ! Consulta todos os tipos de veículo registrados no banco de dados.
+     */
     public List<Tipo_Veiculo> queryAllTiposVeiculo()
     {
         String jpql = "SELECT t FROM Tipo_Veiculo t";
@@ -34,6 +37,9 @@ public class VehicleTypeQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta veículos do tipo passageiro e seus dados.
+    */
     public List<Object[]> queryAllVeiculosWithTipoPassageiro()
     {
         String jpql = "SELECT p.cod_tipo, p.horas_limpeza, p.horas_revisao, p.tamanho," +
@@ -47,6 +53,9 @@ public class VehicleTypeQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta veículos do tipo carga e seus dados.
+    */
     public List<Object[]> queryAllVeiculosWithTipoCarga()
     {
         String jpql = "SELECT c.cod_tipo, c.horas_limpeza, c.horas_revisao, c.capacidade," +
@@ -59,6 +68,9 @@ public class VehicleTypeQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta tipo de veículo com código de tipo de veículo especificado.
+     */
     public Tipo_Veiculo queryTipoVeiculoWithCodTipo(String cod_tipo)
     {
         String jpql = "SELECT t FROM Tipo_Veiculo t WHERE t.cod_tipo = :cod_tipo";
@@ -68,6 +80,9 @@ public class VehicleTypeQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta tipo de veículo de passageiro com código de tipo de veículo especificado.
+     */
     public Tipo_Passageiro queryTipoPassageiroWithCodTipo(String cod_tipo)
     {
         String jpql = "SELECT p FROM Tipo_Passageiro p WHERE p.cod_tipo = :cod_tipo";
@@ -77,6 +92,9 @@ public class VehicleTypeQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta tipo de veículo de carga com código de tipo de veículo especificado.
+     */
     public Tipo_Carga queryTipoCargaWithCodTipo(String cod_tipo)
     {
         String jpql = "SELECT c FROM Tipo_Carga c WHERE c.cod_tipo = :cod_tipo";
@@ -86,6 +104,9 @@ public class VehicleTypeQueries {
         return typedQuery.getSingleResult();
     }
 
+    /*
+    ! Consulta veículos de tipo passageiro do tamanho especificado.
+    */
     public List<Object[]> queryVeiculosTipoPassageiroOfTamanho(String tamanho)
     {
         String jpql = "SELECT p.cod_tipo, p.horas_limpeza, p.horas_revisao, p.tamanho," +
@@ -101,6 +122,9 @@ public class VehicleTypeQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta veículos de tipo passageiro com o número de lugares especificados.
+    */
     public List<Object[]> queryVeiculosTipoPassageiroOfLugares(Integer num_lugares)
     {
         String jpql = "SELECT p.cod_tipo, p.horas_limpeza, p.horas_revisao, p.tamanho," +
@@ -116,6 +140,9 @@ public class VehicleTypeQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta veículos de tipo passageiro com número de portas especificado.
+     */
     public List<Object[]> queryVeiculosTipoPassageiroOfPortas(Integer num_portas)
     {
         String jpql = "SELECT p.cod_tipo, p.horas_limpeza, p.horas_revisao, p.tamanho," +
@@ -131,6 +158,9 @@ public class VehicleTypeQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta veículos de tipo passageiro com ar condicionado e mp3.
+     */
     public List<Object[]> queryVeiculosTipoPassageiroWithArCondicionadoAndMp3()
     {
         String jpql = "SELECT p.cod_tipo, p.horas_limpeza, p.horas_revisao, p.tamanho," +
@@ -145,6 +175,9 @@ public class VehicleTypeQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta veículos de tipo passageiro com direção hidráulica.
+     */
     public List<Object[]> queryVeiculosTipoPassageiroWithDirHidraulica()
     {
         String jpql = "SELECT p.cod_tipo, p.horas_limpeza, p.horas_revisao, p.tamanho," +
@@ -159,6 +192,9 @@ public class VehicleTypeQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta veículos de tipo passageiro com câmbio automático e sem direção hidráulica.
+     */
     public List<Object[]> queryVeiculosTipoPassageiroWithCambioAutomaticoWithoutDirHidraulica()
     {
         String jpql = "SELECT p.cod_tipo, p.horas_limpeza, p.horas_revisao, p.tamanho," +
@@ -173,6 +209,9 @@ public class VehicleTypeQueries {
         return typedQuery.getResultList();
     }
 
+    /*
+    ! Consulta veículos de tipo carga com capacidade acima da especificada.
+     */
     public List<Object[]> queryVeiculosTipoCargaAboveCapacidade(String capacidade)
     {
         String jpql = "SELECT c.cod_tipo, c.horas_limpeza, c.horas_revisao, c.capacidade," +
