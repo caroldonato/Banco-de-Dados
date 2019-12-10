@@ -3,6 +3,7 @@ package queries.byentity;
 import entities.Cliente;
 import entities.Pessoa_Fisica;
 import entities.Pessoa_Juridica;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.time.LocalDate;

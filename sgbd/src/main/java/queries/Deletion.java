@@ -1,6 +1,7 @@
 package queries;
 
 import queries.byentity.*;
+
 import javax.persistence.EntityManager;
 
 @SuppressWarnings("unused")

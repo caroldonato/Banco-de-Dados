@@ -1,3 +1,13 @@
+
+
+###########################################################################################################
+                                                                                                          #
+			FUNÇÕES/MÉTODOS SÃO ACESSADOS PELO WRAPPER Queries				  #
+                                                                                                          #
+###########################################################################################################
+
+
+
 -- Consultar os veículos disponíveis em determinada filial na data corrente.
 	-- Ou seja, os veiculos no dia atual que estão parados.
 	SELECT cod_placa

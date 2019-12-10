@@ -1,6 +1,7 @@
 package queries.byentity;
 
 import entities.Motorista;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.time.LocalDate;
