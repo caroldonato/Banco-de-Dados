@@ -5,8 +5,7 @@ import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import entities.*;
@@ -122,15 +121,41 @@ public class Main extends Application {
                 new ChangeListener<Tab>() {
                     @Override
                     public void changed(ObservableValue<? extends Tab> observableValue, Tab tab, Tab t1) {
-                        System.out.print("Mudou de aba: ");
-                        System.out.println(tab.getText());
-                        System.out.print("para: ");
-                        System.out.println(t1.getText());
+                        System.out.print("Mudou de aba: [");
+                        System.out.print(tab.getText());
+                        System.out.print("] para: [");
+                        System.out.print(t1.getText());
+                        System.out.println("]");
                     }
                 }
         );
+        // criando barra de menu
+        MenuBar menuBar = new MenuBar();
+        // criando menus da barra de menus
+        Menu menuOpt = new Menu("Opções");
 
-        VBox vBox = new VBox(tabPane);
+        MenuItem menuItemInsert = new MenuItem("Inserir");
+        MenuItem menuItemRemove = new MenuItem("Remover");
+        MenuItem menuItemConsul = new MenuItem("Consultar");
+
+        menuItemInsert.setOnAction(event -> {
+            System.out.println("Janela de interção aberta");
+        });
+        menuItemRemove.setOnAction(event -> {
+            System.out.println("Janela de remoção aberta");
+        });
+        menuItemConsul.setOnAction(event -> {
+            System.out.println("Janela de consultas aberta");
+        });
+
+        menuOpt.getItems().add(menuItemInsert);
+        menuOpt.getItems().add(menuItemRemove);
+        menuOpt.getItems().add(menuItemConsul);
+
+        menuBar.getMenus().add(menuOpt);
+
+        VBox vBox = new VBox(menuBar);
+        vBox.getChildren().add(tabPane);
         Scene scene = new Scene(vBox);
 
         primaryStage.setScene(scene);
