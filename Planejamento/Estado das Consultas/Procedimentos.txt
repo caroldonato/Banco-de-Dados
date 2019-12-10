@@ -1,3 +1,13 @@
+
+
+###########################################################################################################
+                                                                                                          #
+			FUNÇÕES/MÉTODOS SÃO ACESSADOS PELO WRAPPER Procedures				  #
+                                                                                                          #
+###########################################################################################################
+
+
+
 -- Contar número total de clientes registrados.
 
 CREATE OR REPLACE FUNCTION contar_clientes(OUT total integer)

@@ -2,6 +2,7 @@ package queries;
 
 import entities.*;
 import queries.byentity.*;
+
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.util.List;

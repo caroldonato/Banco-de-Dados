@@ -1,6 +1,5 @@
 package queries.byentity;
 
-import entities.Filial;
 import entities.Reserva;
 
 import javax.persistence.EntityManager;
@@ -62,6 +61,11 @@ public class ReservaQueries {
         TypedQuery<Reserva> typedQuery = em.createQuery(jpql, Reserva.class);
         return typedQuery.getResultList();
     }
+
+    /*
+    ! Consulta de reservas possíveis para uma determinada data e filial.
+    */
+
 
     // ========================================================================
     /* GETTERS & SETTERS */

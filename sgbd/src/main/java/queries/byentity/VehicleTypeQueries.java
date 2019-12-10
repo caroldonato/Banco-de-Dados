@@ -1,6 +1,9 @@
 package queries.byentity;
 
-import entities.*;
+import entities.Tipo_Carga;
+import entities.Tipo_Passageiro;
+import entities.Tipo_Veiculo;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;

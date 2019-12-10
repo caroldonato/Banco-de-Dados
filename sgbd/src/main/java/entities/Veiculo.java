@@ -1,6 +1,5 @@
 package entities;
 
-import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.Objects;
 
