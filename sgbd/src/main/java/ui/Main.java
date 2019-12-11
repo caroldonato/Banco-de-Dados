@@ -141,15 +141,19 @@ public class Main extends Application {
         MenuItem menuItemConsul = new MenuItem("Consultar");
 
         menuItemInsert.setOnAction(event -> {
-            System.out.println("Janela de interção aberta");
+            System.out.println("Janela de inserção aberta");
             this.handleInsert(new Stage());
             System.out.println("Janela de inserção fechada");
         });
         menuItemRemove.setOnAction(event -> {
             System.out.println("Janela de remoção aberta");
+            this.handleRemove(new Stage());
+            System.out.println("Janela de remoção fechada");
         });
         menuItemConsul.setOnAction(event -> {
             System.out.println("Janela de consultas aberta");
+            this.handleConsult(new Stage());
+            System.out.println("Janela de consultas fechada");
         });
 
         menuOpt.getItems().add(menuItemInsert);
@@ -163,9 +167,89 @@ public class Main extends Application {
         Scene scene = new Scene(vBox);
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("JavaFX App");
+        primaryStage.setTitle("LOCADORA DE VEÍCULOS");
 
         primaryStage.show();
+    }
+
+    private void handleConsult(Stage primaryStage) {
+        TabPane tabPane = new TabPane();
+
+        Tab tab1 = new Tab("Clientes");
+        Tab tab2 = new Tab("Motoristas");
+        Tab tab3 = new Tab("Reservas");
+        Tab tab4 = new Tab("Locações");
+        Tab tab5 = new Tab("Veiculos");
+        Tab tab6 = new Tab("Tipos de Veículos");
+        Tab tab7 = new Tab("Filiais");
+
+        tab1.setClosable(false);
+        tab2.setClosable(false);
+        tab3.setClosable(false);
+        tab4.setClosable(false);
+        tab5.setClosable(false);
+        tab6.setClosable(false);
+        tab7.setClosable(false);
+
+        tabPane.getTabs().add(tab1);
+        tabPane.getTabs().add(tab2);
+        tabPane.getTabs().add(tab3);
+        tabPane.getTabs().add(tab4);
+        tabPane.getTabs().add(tab5);
+        tabPane.getTabs().add(tab6);
+        tabPane.getTabs().add(tab7);
+
+        //criando aba de criação de cliente
+        Button newb = new Button("Consultar");
+        tab1.setContent(newb);
+
+        VBox total = new VBox(tabPane);
+        Scene scene = new Scene(total);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Consulta de entrada");
+
+        primaryStage.showAndWait();
+    }
+
+    private void handleRemove(Stage primaryStage) {
+        TabPane tabPane = new TabPane();
+
+        Tab tab1 = new Tab("Clientes");
+        Tab tab2 = new Tab("Motoristas");
+        Tab tab3 = new Tab("Reservas");
+        Tab tab4 = new Tab("Locações");
+        Tab tab5 = new Tab("Veiculos");
+        Tab tab6 = new Tab("Tipos de Veículos");
+        Tab tab7 = new Tab("Filiais");
+
+        tab1.setClosable(false);
+        tab2.setClosable(false);
+        tab3.setClosable(false);
+        tab4.setClosable(false);
+        tab5.setClosable(false);
+        tab6.setClosable(false);
+        tab7.setClosable(false);
+
+        tabPane.getTabs().add(tab1);
+        tabPane.getTabs().add(tab2);
+        tabPane.getTabs().add(tab3);
+        tabPane.getTabs().add(tab4);
+        tabPane.getTabs().add(tab5);
+        tabPane.getTabs().add(tab6);
+        tabPane.getTabs().add(tab7);
+
+        //criando aba de criação de cliente
+        Button newb = new Button("Remover");
+        tab1.setContent(newb);
+
+        VBox total = new VBox(tabPane);
+        Scene scene = new Scene(total);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Remoção de entrada");
+
+        primaryStage.showAndWait();
     }
 
     public void handleInsert(Stage primaryStage)
@@ -204,9 +288,9 @@ public class Main extends Application {
         Scene scene = new Scene(total);
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("JavaFX App");
+        primaryStage.setTitle("Criação de entrada");
 
-        primaryStage.show();
+        primaryStage.showAndWait();
     }
 
 }
