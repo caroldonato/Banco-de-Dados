@@ -321,17 +321,18 @@ public class Main extends Application {
     }
 
     private void createLocacoesTab(Tab tab4) {
-        SGDBTable<Locacao> dataTable4 = new SGDBTable<Locacao>();
+        SGDBTable<WLocacao> dataTable4 = new SGDBTable<WLocacao>();
         Vector<String> colNames = new Vector<>();
         colNames.add("Cod_locacao");
         colNames.add("Cod_placa");
         colNames.add("Cod_filial_dest");
-        // tem que ver como que faz drop down dentro de tabela
-        // ver pq é uma lista
-//        colNames.add("Cod_motorista");
+        colNames.add("Cod_motorista");
         colNames.add("Data_entrega");
         dataTable4.setColumNames(colNames);
-        dataTable4.setTableData(query.queryAllLocacoes());
+        List<WLocacao> wlocs = new Vector<WLocacao>();
+        for(Locacao loc : this.query.queryAllLocacoes())
+            wlocs.add(new WLocacao(loc));
+        dataTable4.setTableData(wlocs);
         tab4.setContent(dataTable4.getTable());
     }
 
