@@ -35,9 +35,17 @@ public class LocacaoQueries {
      */
     public List<Locacao> queryAllLocacoes()
     {
-        String jpql = "SELECT l FROM Locacao l";
-        TypedQuery<Locacao> typedQuery = em.createQuery(jpql, Locacao.class);
-        return typedQuery.getResultList();
+        try{
+            String jpql = "SELECT l FROM Locacao l";
+            TypedQuery<Locacao> typedQuery = em.createQuery(jpql, Locacao.class);
+            return typedQuery.getResultList();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryAllLocacoes: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     /*
@@ -45,11 +53,19 @@ public class LocacaoQueries {
      */
     public Locacao queryLocacaoWithCodLocacao(Integer cod_locacao)
     {
-        String jpql = "SELECT l from Locacao l WHERE l.cod_locacao = :cod_locacao";
-        TypedQuery<Locacao> typedQuery = em.createQuery(jpql, Locacao.class);
-        typedQuery.setParameter("cod_locacao", cod_locacao);
+        try{
+            String jpql = "SELECT l from Locacao l WHERE l.cod_locacao = :cod_locacao";
+            TypedQuery<Locacao> typedQuery = em.createQuery(jpql, Locacao.class);
+            typedQuery.setParameter("cod_locacao", cod_locacao);
 
-        return typedQuery.getSingleResult();
+            return typedQuery.getSingleResult();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryLocacaoWithCodLocacao: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     /*
@@ -58,16 +74,24 @@ public class LocacaoQueries {
      */
     public List<Object[]> queryLocacaoOverKmWithCodFilialDest(String cod_filial, Integer km)
     {
-        String jpql = "SELECT c.nome, v.cod_placa FROM Locacao l" +
-                      " JOIN Veiculo v ON l.veiculo.cod_placa = v.cod_placa" +
-                      " JOIN Motorista m ON l.motorista.cod_motorista = m.cod_motorista" +
-                      " JOIN Cliente c ON m.cliente.cod_cliente = c.cod_cliente" +
-                      " WHERE v.km_atual > :km AND l.filila_dest.cod_filial = :cod_filial";
+        try{
+            String jpql = "SELECT c.nome, v.cod_placa FROM Locacao l" +
+                    " JOIN Veiculo v ON l.veiculo.cod_placa = v.cod_placa" +
+                    " JOIN Motorista m ON l.motorista.cod_motorista = m.cod_motorista" +
+                    " JOIN Cliente c ON m.cliente.cod_cliente = c.cod_cliente" +
+                    " WHERE v.km_atual > :km AND l.filila_dest.cod_filial = :cod_filial";
 
-        TypedQuery<Object[]> typedQuery = em.createQuery(jpql, Object[].class);
-        typedQuery.setParameter("km", km);
-        typedQuery.setParameter("cod_filial", cod_filial);
-        return typedQuery.getResultList();
+            TypedQuery<Object[]> typedQuery = em.createQuery(jpql, Object[].class);
+            typedQuery.setParameter("km", km);
+            typedQuery.setParameter("cod_filial", cod_filial);
+            return typedQuery.getResultList();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryLocacaoOverKmWithCodFilialDest: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     /*
@@ -76,14 +100,22 @@ public class LocacaoQueries {
      */
     public List<Object[]> queryLocacaoBeforeDataEntrega(LocalDate data)
     {
-        String jpql = "SELECT c.nome, m.ident_motorista FROM Locacao l" +
-                      " JOIN Motorista m ON l.motorista.cod_motorista = m.cod_motorista" +
-                      " JOIN Cliente c ON m.cliente.cod_cliente = c.cod_cliente" +
-                      " WHERE l.data_entrega = :data";
+        try{
+            String jpql = "SELECT c.nome, m.ident_motorista FROM Locacao l" +
+                    " JOIN Motorista m ON l.motorista.cod_motorista = m.cod_motorista" +
+                    " JOIN Cliente c ON m.cliente.cod_cliente = c.cod_cliente" +
+                    " WHERE l.data_entrega = :data";
 
-        TypedQuery<Object[]> typedQuery = em.createQuery(jpql, Object[].class);
-        typedQuery.setParameter("data", data);
-        return typedQuery.getResultList();
+            TypedQuery<Object[]> typedQuery = em.createQuery(jpql, Object[].class);
+            typedQuery.setParameter("data", data);
+            return typedQuery.getResultList();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryLocacaoBeforeDataEntrega: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     // ========================================================================

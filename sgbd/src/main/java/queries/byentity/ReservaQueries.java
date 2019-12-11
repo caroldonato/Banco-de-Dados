@@ -33,9 +33,17 @@ public class ReservaQueries {
      */
     public List<Reserva> queryAllReservas()
     {
-        String jpql = "SELECT r FROM Reserva r";
-        TypedQuery<Reserva> typedQuery = em.createQuery(jpql, Reserva.class);
-        return typedQuery.getResultList();
+        try{
+            String jpql = "SELECT r FROM Reserva r";
+            TypedQuery<Reserva> typedQuery = em.createQuery(jpql, Reserva.class);
+            return typedQuery.getResultList();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryAllReservas: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     /*
@@ -43,11 +51,19 @@ public class ReservaQueries {
      */
     public Reserva queryReservaWithCodReserva(Integer cod_reserva)
     {
-        String jpql = "SELECT r FROM Reserva r WHERE r.cod_reserva = :cod_reserva";
-        TypedQuery<Reserva> typedQuery = em.createQuery(jpql, Reserva.class);
-        typedQuery.setParameter("cod_reserva", cod_reserva);
+        try{
+            String jpql = "SELECT r FROM Reserva r WHERE r.cod_reserva = :cod_reserva";
+            TypedQuery<Reserva> typedQuery = em.createQuery(jpql, Reserva.class);
+            typedQuery.setParameter("cod_reserva", cod_reserva);
 
-        return typedQuery.getSingleResult();
+            return typedQuery.getSingleResult();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryReservaWithCodReserva: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     /*
@@ -56,16 +72,19 @@ public class ReservaQueries {
      */
     public List<Reserva> queryReservaComMesmaOrigemEDestinoTipoCarga()
     {
-        String jpql = "SELECT r FROM Reserva r JOIN Tipo_Carga c ON r.tipo.cod_tipo = c.tipo.cod_tipo" +
-                      " WHERE r.cod_filial.orig = r.cod_filial.dest";
-        TypedQuery<Reserva> typedQuery = em.createQuery(jpql, Reserva.class);
-        return typedQuery.getResultList();
+        try{
+            String jpql = "SELECT r FROM Reserva r JOIN Tipo_Carga c ON r.tipo.cod_tipo = c.tipo.cod_tipo" +
+                    " WHERE r.cod_filial.orig = r.cod_filial.dest";
+            TypedQuery<Reserva> typedQuery = em.createQuery(jpql, Reserva.class);
+            return typedQuery.getResultList();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryReservaComMesmaOrigemEDestinoTipoCarga: " + cause.getMessage() + ".");
+            return null;
+        }
     }
-
-    /*
-    ! Consulta de reservas possíveis para uma determinada data e filial.
-    */
-
 
     // ========================================================================
     /* GETTERS & SETTERS */

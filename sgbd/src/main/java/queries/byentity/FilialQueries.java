@@ -33,9 +33,17 @@ public class FilialQueries {
      */
     public List<Filial> queryAllFiliais()
     {
-        String jpql = "SELECT f FROM Filial";
-        TypedQuery<Filial> typedQuery = em.createQuery(jpql, Filial.class);
-        return typedQuery.getResultList();
+        try{
+            String jpql = "SELECT f FROM Filial f";
+            TypedQuery<Filial> typedQuery = em.createQuery(jpql, Filial.class);
+            return typedQuery.getResultList();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryAllFiliais: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     /*
@@ -43,11 +51,19 @@ public class FilialQueries {
      */
     public Filial queryFilialWithCodFilial(String cod_filial)
     {
-        String jpql = "SELECT f FROM Filial f WHERE f.cod_filial = :cod_filial";
-        TypedQuery<Filial> typedQuery = em.createQuery(jpql, Filial.class);
-        typedQuery.setParameter("cod_filial", cod_filial);
+        try{
+            String jpql = "SELECT f FROM Filial f WHERE f.cod_filial = :cod_filial";
+            TypedQuery<Filial> typedQuery = em.createQuery(jpql, Filial.class);
+            typedQuery.setParameter("cod_filial", cod_filial);
 
-        return typedQuery.getSingleResult();
+            return typedQuery.getSingleResult();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryFilialWithCodFilial: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     /*
@@ -55,11 +71,19 @@ public class FilialQueries {
      */
     public List<Filial> queryFilialWithLocalizacao(String localizacao)
     {
-        String jpql = "SELECT f FROM Filial WHERE f.localizacao = :localizacao";
-        TypedQuery<Filial> typedQuery = em.createQuery(jpql, Filial.class);
-        typedQuery.setParameter("localizacao", localizacao);
+        try{
+            String jpql = "SELECT f FROM Filial WHERE f.localizacao = :localizacao";
+            TypedQuery<Filial> typedQuery = em.createQuery(jpql, Filial.class);
+            typedQuery.setParameter("localizacao", localizacao);
 
-        return typedQuery.getResultList();
+            return typedQuery.getResultList();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryFilialWithLocalizacao: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     // ========================================================================

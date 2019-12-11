@@ -33,9 +33,17 @@ public class MotoristaQueries {
      */
     public List<Motorista> queryAllMotoristas()
     {
-        String jpql = "SELECT m FROM Motorista m";
-        TypedQuery<Motorista> typedQuery = em.createQuery(jpql, Motorista.class);
-        return typedQuery.getResultList();
+        try{
+            String jpql = "SELECT m FROM Motorista m";
+            TypedQuery<Motorista> typedQuery = em.createQuery(jpql, Motorista.class);
+            return typedQuery.getResultList();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryAllMotoristas: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     /*
@@ -43,10 +51,18 @@ public class MotoristaQueries {
      */
     public Motorista queryMotoristaWithCodMotorista(Integer cod_motorista)
     {
-        String jpql = "SELECT m FROM Motorista m WHERE m.cod_motorista = :cod_motorista";
-        TypedQuery<Motorista> typedQuery = em.createQuery(jpql, Motorista.class);
-        typedQuery.setParameter("cod_motorista", cod_motorista);
-        return typedQuery.getSingleResult();
+        try{
+            String jpql = "SELECT m FROM Motorista m WHERE m.cod_motorista = :cod_motorista";
+            TypedQuery<Motorista> typedQuery = em.createQuery(jpql, Motorista.class);
+            typedQuery.setParameter("cod_motorista", cod_motorista);
+            return typedQuery.getSingleResult();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryMotoristaWithCodMotorista: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     /*
@@ -54,11 +70,19 @@ public class MotoristaQueries {
      */
     public Motorista queryMotoristaWithNumHab(Long num_hab)
     {
-        String jpql = "SELECT m FROM Motorista m WHERE m.num_habili = :num_hab";
-        TypedQuery<Motorista> typedQuery = em.createQuery(jpql, Motorista.class);
-        typedQuery.setParameter("num_hab", num_hab);
+        try{
+            String jpql = "SELECT m FROM Motorista m WHERE m.num_habili = :num_hab";
+            TypedQuery<Motorista> typedQuery = em.createQuery(jpql, Motorista.class);
+            typedQuery.setParameter("num_hab", num_hab);
 
-        return typedQuery.getSingleResult();
+            return typedQuery.getSingleResult();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryMotoristaWithNumHab: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     /*
@@ -66,11 +90,19 @@ public class MotoristaQueries {
      */
     public List<Motorista> queryMotoristasWithHabilitacaoVencida()
     {
-        LocalDate data = LocalDate.now();
-        String jpql = "SELECT m FROM Motorista m WHERE m.vencimento_habili <= :data";
-        TypedQuery<Motorista> typedQuery = em.createQuery(jpql, Motorista.class);
-        typedQuery.setParameter("data", data);
-        return typedQuery.getResultList();
+        try{
+            LocalDate data = LocalDate.now();
+            String jpql = "SELECT m FROM Motorista m WHERE m.vencimento_habili <= :data";
+            TypedQuery<Motorista> typedQuery = em.createQuery(jpql, Motorista.class);
+            typedQuery.setParameter("data", data);
+            return typedQuery.getResultList();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryMotoristasWithHabilitacaoVencida: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     // ========================================================================

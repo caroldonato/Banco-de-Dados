@@ -33,9 +33,17 @@ public class RevisaoQueries {
      */
     public List<Revisao> queryAllRevisoes()
     {
-        String jpql = "SELECT r FROM Revisao r";
-        TypedQuery<Revisao> typedQuery = em.createQuery(jpql, Revisao.class);
-        return typedQuery.getResultList();
+        try{
+            String jpql = "SELECT r FROM Revisao r";
+            TypedQuery<Revisao> typedQuery = em.createQuery(jpql, Revisao.class);
+            return typedQuery.getResultList();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryAllRevisoes: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     /*
@@ -43,15 +51,23 @@ public class RevisaoQueries {
      */
     public Revisao queryRevisaoWithCodTipoAndCodRevisao(String cod_tipo, Integer cod_revisao)
     {
-        String jpql = "SELECT r FROM Revisao r, Tipo_Veiculo t WHERE " +
-                      "r.cod_tipo = t.cod_tipo AND " +
-                      "t.cod_tipo = :cod_tipo AND " +
-                      "r.cod_revisao = :cod_revisao";
-        TypedQuery<Revisao> typedQuery = em.createQuery(jpql, Revisao.class);
-        typedQuery.setParameter("cod_tipo", cod_tipo);
-        typedQuery.setParameter("cod_revisao", cod_revisao);
+        try{
+            String jpql = "SELECT r FROM Revisao r, Tipo_Veiculo t WHERE " +
+                    "r.cod_tipo = t.cod_tipo AND " +
+                    "t.cod_tipo = :cod_tipo AND " +
+                    "r.cod_revisao = :cod_revisao";
+            TypedQuery<Revisao> typedQuery = em.createQuery(jpql, Revisao.class);
+            typedQuery.setParameter("cod_tipo", cod_tipo);
+            typedQuery.setParameter("cod_revisao", cod_revisao);
 
-        return typedQuery.getSingleResult();
+            return typedQuery.getSingleResult();
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Erro na consulta queryRevisaoWithCodTipoAndCodRevisao: " + cause.getMessage() + ".");
+            return null;
+        }
     }
 
     // ========================================================================

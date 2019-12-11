@@ -216,7 +216,7 @@ public class Deletion {
         catch (Exception e)
         {
             Exception cause = (Exception) e.getCause();
-            System.out.println("Não foi possível remover locação de códio" + cod_locacao +
+            System.out.println("Não foi possível remover locação de código" + cod_locacao +
                     ": " + cause.getMessage() + ".");
         }
     }

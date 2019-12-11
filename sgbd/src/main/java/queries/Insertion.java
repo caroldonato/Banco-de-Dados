@@ -128,8 +128,16 @@ public class Insertion {
      */
     public void insertPessoaFisica(String nome, String endereco, String sexo, LocalDate data_nasc, Long cpf)
     {
-        Pessoa_Fisica pessoa_fisica = new Pessoa_Fisica(nome, endereco, sexo, data_nasc, cpf);
-        this.insertEntity(pessoa_fisica);
+        try{
+            Pessoa_Fisica pessoa_fisica = new Pessoa_Fisica(nome, endereco, sexo, data_nasc, cpf);
+            this.insertEntity(pessoa_fisica);
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Não foi possível inserir pessoa física de nome " + nome +
+                    " e CPF " + cpf + ": " + cause.getMessage() + ".");
+        }
     }
 
     /*
@@ -137,8 +145,16 @@ public class Insertion {
      */
     public void insertPessoaJuridica(String nome, String endereco, Long cnpj, Long inscr_estado)
     {
-        Pessoa_Juridica pessoa_juridica = new Pessoa_Juridica(nome, endereco, cnpj, inscr_estado);
-        this.insertEntity(pessoa_juridica);
+        try{
+            Pessoa_Juridica pessoa_juridica = new Pessoa_Juridica(nome, endereco, cnpj, inscr_estado);
+            this.insertEntity(pessoa_juridica);
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Não foi possível inserir pessoa jurídica de nome " +
+                    nome + " e CNPJ " + cnpj + ": " + cause.getMessage() + ".");
+        }
     }
 
     /*
@@ -149,10 +165,18 @@ public class Insertion {
                                      boolean ar_condicionado, boolean radio, boolean mp3, boolean cd,
                                      boolean dir_hidr, boolean cambio_auto)
     {
-        Tipo_Passageiro tipo_passageiro = new Tipo_Passageiro(cod_tipo, horas_limpeza, horas_revisao,
-                tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto);
+        try{
+            Tipo_Passageiro tipo_passageiro = new Tipo_Passageiro(cod_tipo, horas_limpeza, horas_revisao,
+                    tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto);
 
-        this.insertEntity(tipo_passageiro);
+            this.insertEntity(tipo_passageiro);
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Não foi possível inserir tipo de veículo de código" + cod_tipo +
+                    ": " + cause.getMessage() + ".");
+        }
     }
 
     /*
@@ -160,8 +184,16 @@ public class Insertion {
      */
     public void insertTipoCarga(String cod_tipo, Integer horas_limpeza, Integer horas_revisao, Integer capacidade)
     {
-        Tipo_Carga tipo_carga = new Tipo_Carga(cod_tipo, horas_limpeza, horas_revisao, capacidade);
-        this.insertEntity(tipo_carga);
+        try{
+            Tipo_Carga tipo_carga = new Tipo_Carga(cod_tipo, horas_limpeza, horas_revisao, capacidade);
+            this.insertEntity(tipo_carga);
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Não foi possível inserir tipo de veículo de código" + cod_tipo +
+                    ": " + cause.getMessage() + ".");
+        }
     }
 
     /*
@@ -169,8 +201,16 @@ public class Insertion {
      */
     public void insertFilial(String cod_filial, String localizacao)
     {
-        Filial filial = new Filial(cod_filial, localizacao);
-        this.insertEntity(filial);
+        try{
+            Filial filial = new Filial(cod_filial, localizacao);
+            this.insertEntity(filial);
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Não foi possível inserir filial de código " + cod_filial +
+                    ": " + cause.getMessage() + ".");
+        }
     }
 
     /*
@@ -179,9 +219,17 @@ public class Insertion {
     public void insertVeiculo(String cod_placa, Tipo_Veiculo tipo, Filial filial_atual, String num_chassi,
                               String num_motor, String cor, Integer km_atual, boolean revisao_pendente, boolean parado)
     {
-        Veiculo veiculo = new Veiculo(cod_placa, tipo, filial_atual, num_chassi, num_motor, cor,
-                km_atual, revisao_pendente, parado);
-        this.insertEntity(veiculo);
+        try{
+            Veiculo veiculo = new Veiculo(cod_placa, tipo, filial_atual, num_chassi, num_motor, cor,
+                    km_atual, revisao_pendente, parado);
+            this.insertEntity(veiculo);
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Não foi possível inserir veículo de placa " +
+                    cod_placa + ": " + cause.getMessage() + ".");
+        }
     }
 
     /*
@@ -189,8 +237,16 @@ public class Insertion {
      */
     public void insertRevisao(Tipo_Veiculo tipo, Integer km_media)
     {
-        Revisao revisao = new Revisao(tipo, km_media);
-        this.insertEntity(revisao);
+        try{
+            Revisao revisao = new Revisao(tipo, km_media);
+            this.insertEntity(revisao);
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Não foi possível remover revisão de código de tipo " +
+                     tipo.getCod_tipo() + ": " + cause.getMessage() + ".");
+        }
     }
 
     /*
@@ -198,15 +254,23 @@ public class Insertion {
      */
     public void insertLocacao(String cod_placa, String cod_filial_dest, Integer cod_motorista, LocalDate data_entrega)
     {
-        VehicleQueries vehicleQueries = new VehicleQueries(this.em);
-        FilialQueries filialQueries = new FilialQueries(this.em);
-        MotoristaQueries motoristaQueries = new MotoristaQueries(this.em);
+        try{
+            VehicleQueries vehicleQueries = new VehicleQueries(this.em);
+            FilialQueries filialQueries = new FilialQueries(this.em);
+            MotoristaQueries motoristaQueries = new MotoristaQueries(this.em);
 
-        Veiculo veiculo = vehicleQueries.queryVeiculoWithCodPlaca(cod_placa);
-        Filial filial = filialQueries.queryFilialWithCodFilial(cod_filial_dest);
-        Motorista motorista = motoristaQueries.queryMotoristaWithCodMotorista(cod_motorista);
+            Veiculo veiculo = vehicleQueries.queryVeiculoWithCodPlaca(cod_placa);
+            Filial filial = filialQueries.queryFilialWithCodFilial(cod_filial_dest);
+            Motorista motorista = motoristaQueries.queryMotoristaWithCodMotorista(cod_motorista);
 
-        Locacao locacao = new Locacao(veiculo, filial, motorista, data_entrega);
+            Locacao locacao = new Locacao(veiculo, filial, motorista, data_entrega);
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Não foi possível remover locação de código de placa " + cod_placa +
+                    ": " + cause.getMessage() + ".");
+        }
     }
 
     /*
@@ -215,17 +279,26 @@ public class Insertion {
     public void insertReserva(String cod_tipo, String cod_filial_dest, String cod_filial_orig, String cod_cliente,
                               LocalDate data_entrega, LocalDate data_retirada)
     {
-        VehicleTypeQueries vehicleTypeQueries = new VehicleTypeQueries(this.em);
-        FilialQueries filialQueries = new FilialQueries(this.em);
-        ClienteQueries clienteQueries = new ClienteQueries(this.em);
+        try{
+            VehicleTypeQueries vehicleTypeQueries = new VehicleTypeQueries(this.em);
+            FilialQueries filialQueries = new FilialQueries(this.em);
+            ClienteQueries clienteQueries = new ClienteQueries(this.em);
 
-        Tipo_Veiculo tipo_veiculo = vehicleTypeQueries.queryTipoVeiculoWithCodTipo(cod_tipo);
-        Filial filial_dest = filialQueries.queryFilialWithCodFilial(cod_filial_dest);
-        Filial filial_orig = filialQueries.queryFilialWithCodFilial(cod_filial_orig);
-        Cliente cliente = clienteQueries.queryClienteWithCodCliente(cod_cliente);
+            Tipo_Veiculo tipo_veiculo = vehicleTypeQueries.queryTipoVeiculoWithCodTipo(cod_tipo);
+            Filial filial_dest = filialQueries.queryFilialWithCodFilial(cod_filial_dest);
+            Filial filial_orig = filialQueries.queryFilialWithCodFilial(cod_filial_orig);
+            Cliente cliente = clienteQueries.queryClienteWithCodCliente(cod_cliente);
 
-        Reserva reserva = new Reserva(tipo_veiculo, filial_dest, filial_orig, cliente, data_entrega, data_retirada);
-        this.insertEntity(reserva);
+            Reserva reserva = new Reserva(tipo_veiculo, filial_dest, filial_orig, cliente, data_entrega, data_retirada);
+            this.insertEntity(reserva);
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Não foi possível remover reserva de código de tipo " + cod_tipo +
+                    ": " + cause.getMessage() + ".");
+        }
+
     }
 
 
@@ -273,16 +346,24 @@ public class Insertion {
     public void insertLocacaoForMotoristaWithNumHabiliAndCodPlacaAndFilial(String cod_placa, String cod_filial_dest,
                                                                             Long num_habili, LocalDate data_entrega)
     {
-        VehicleQueries vehicleQueries = new VehicleQueries(this.em);
-        FilialQueries filialQueries = new FilialQueries(this.em);
-        MotoristaQueries motoristaQueries = new MotoristaQueries(this.em);
+        try{
+            VehicleQueries vehicleQueries = new VehicleQueries(this.em);
+            FilialQueries filialQueries = new FilialQueries(this.em);
+            MotoristaQueries motoristaQueries = new MotoristaQueries(this.em);
 
-        Veiculo veiculo = vehicleQueries.queryVeiculoWithCodPlaca(cod_placa);
-        Filial filial = filialQueries.queryFilialWithCodFilial(cod_filial_dest);
-        Motorista motorista = motoristaQueries.queryMotoristaWithNumHab(num_habili);
+            Veiculo veiculo = vehicleQueries.queryVeiculoWithCodPlaca(cod_placa);
+            Filial filial = filialQueries.queryFilialWithCodFilial(cod_filial_dest);
+            Motorista motorista = motoristaQueries.queryMotoristaWithNumHab(num_habili);
 
-        Locacao locacao = new Locacao(veiculo, filial, motorista, data_entrega);
-        this.insertEntity(locacao);
+            Locacao locacao = new Locacao(veiculo, filial, motorista, data_entrega);
+            this.insertEntity(locacao);
+        }
+        catch (Exception e)
+        {
+            Exception cause = (Exception) e.getCause();
+            System.out.println("Não foi possível inserir locação para motorista de habilitação " + num_habili +
+                    ": " + cause.getMessage() + ".");
+        }
     }
 
 
