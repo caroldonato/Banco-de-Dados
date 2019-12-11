@@ -7,9 +7,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import entities.*;
 
+import javax.swing.*;
 import java.util.Vector;
 
 public class Main extends Application {
@@ -140,6 +142,8 @@ public class Main extends Application {
 
         menuItemInsert.setOnAction(event -> {
             System.out.println("Janela de interção aberta");
+            this.handleInsert(new Stage());
+            System.out.println("Janela de inserção fechada");
         });
         menuItemRemove.setOnAction(event -> {
             System.out.println("Janela de remoção aberta");
@@ -163,23 +167,46 @@ public class Main extends Application {
 
         primaryStage.show();
     }
+
+    public void handleInsert(Stage primaryStage)
+    {
+        TabPane tabPane = new TabPane();
+
+        Tab tab1 = new Tab("Clientes");
+        Tab tab2 = new Tab("Motoristas");
+        Tab tab3 = new Tab("Reservas");
+        Tab tab4 = new Tab("Locações");
+        Tab tab5 = new Tab("Veiculos");
+        Tab tab6 = new Tab("Tipos de Veículos");
+        Tab tab7 = new Tab("Filiais");
+
+        tab1.setClosable(false);
+        tab2.setClosable(false);
+        tab3.setClosable(false);
+        tab4.setClosable(false);
+        tab5.setClosable(false);
+        tab6.setClosable(false);
+        tab7.setClosable(false);
+
+        tabPane.getTabs().add(tab1);
+        tabPane.getTabs().add(tab2);
+        tabPane.getTabs().add(tab3);
+        tabPane.getTabs().add(tab4);
+        tabPane.getTabs().add(tab5);
+        tabPane.getTabs().add(tab6);
+        tabPane.getTabs().add(tab7);
+
+        //criando aba de criação de cliente
+        Button newb = new Button("Criar");
+        tab1.setContent(newb);
+
+        VBox total = new VBox(tabPane);
+        Scene scene = new Scene(total);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("JavaFX App");
+
+        primaryStage.show();
+    }
+
 }
-
-
-//    List linList = new ArrayList();
-//    Cliente newCli1 = new Cliente();
-//        newCli1.setCod_cliente(0);
-//                newCli1.setEndereco("Rua1");
-//                newCli1.setNome("n1");
-//                linList.add(newCli1);
-//                Cliente newCli2 = new Cliente();
-//                newCli2.setCod_cliente(1);
-//                newCli2.setEndereco("Rua2");
-//                newCli2.setNome("n2");
-//                linList.add(newCli2);
-//                Cliente newCli3 = new Cliente();
-//                newCli3.setCod_cliente(2);
-//                newCli3.setEndereco("Rua3");
-//                newCli3.setNome("n3");
-//                linList.add(newCli3);
-//                dataTable1.setTableData(linList);

@@ -56,7 +56,7 @@ print("ALTER SEQUENCE cliente_cod_cliente_seq RESTART;\n"+
 	"ALTER SEQUENCE reserva_cod_reserva_seq RESTART;\n"+
 	"ALTER SEQUENCE revisao_cod_revisao_seq RESTART;\n")
 
-with open("G:\\UEL\\terceiroano\\TrabalhosEmGrupo\\BancoDeDados\\locadora_veiculo\\GeradorInsercoes\\list_name_city.txt", encoding="utf8") as city, open("G:\\UEL\\terceiroano\\TrabalhosEmGrupo\\BancoDeDados\\locadora_veiculo\\GeradorInsercoes\\list_name_person.txt", encoding="utf8") as person:
+with open("/home/mmaestro/Documents/Banco-de-Dados/GeradorInsercoes/list_name_city.txt", encoding="utf8") as city, open("/home/mmaestro/Documents/Banco-de-Dados/GeradorInsercoes/list_name_person.txt", encoding="utf8") as person:
 	list_filial = []
 	list_tipo = []
 	list_placa = []
