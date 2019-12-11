@@ -1,7 +1,6 @@
 package ui;
 
-import elements.SGDBTable;
-import elements.WMotorista;
+import elements.*;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -301,7 +300,7 @@ public class Main extends Application {
     }
 
     private void createVeiculosTab(Tab tab5) {
-        SGDBTable<Veiculo> dataTable5 = new SGDBTable<Veiculo>();
+        SGDBTable<WVeiculo> dataTable5 = new SGDBTable<WVeiculo>();
         Vector<String> colNames = new Vector<>();
         colNames.add("Cod_placa");
         colNames.add("Cod_tipo");
@@ -310,9 +309,13 @@ public class Main extends Application {
         colNames.add("Num_motor");
         colNames.add("Cor");
         colNames.add("Km_atual");
-        colNames.add("revisao_pendente");
+        colNames.add("Revisao_pendente");
+        colNames.add("Parado");
         dataTable5.setColumNames(colNames);
-        dataTable5.setTableData(query.queryAllVeiculos());
+        List<WVeiculo> wveics = new Vector<WVeiculo>();
+        for(Veiculo veic : this.query.queryAllVeiculos())
+            wveics.add(new WVeiculo(veic));
+        dataTable5.setTableData(wveics);
         tab5.setContent(dataTable5.getTable());
 
     }
@@ -333,17 +336,21 @@ public class Main extends Application {
     }
 
     private void createReservasTab(Tab tab3) {
-        SGDBTable<Reserva> dataTable3 = new SGDBTable<Reserva>();
+        SGDBTable<WReserva> dataTable3 = new SGDBTable<WReserva>();
         Vector<String> colNames = new Vector<>();
         colNames.add("Cod_reserva");
         colNames.add("Tipo");
-        colNames.add("Cod_filial_dest");
-        colNames.add("Cod_filial_orig");
+        colNames.add("Filial_orig");
+        colNames.add("Filial_dest");
         colNames.add("Cod_cliente");
         colNames.add("Data_retirada");
         colNames.add("Data_entrega");
         dataTable3.setColumNames(colNames);
-        dataTable3.setTableData(query.queryAllReservas());
+        List<Reserva> resList = this.query.queryAllReservas();
+        List<WReserva> wress = new Vector<WReserva>();
+        for(Reserva res : resList)
+            wress.add(new WReserva(res));
+        dataTable3.setTableData(wress);
         tab3.setContent(dataTable3.getTable());
     }
 
@@ -356,7 +363,7 @@ public class Main extends Application {
         colNames.add("Ident_motorista");
         colNames.add("Vencimento_habili");
         dataTable2.setColumNames(colNames);
-        List<Motorista> motoList = query.queryAllMotoristas();
+        List<Motorista> motoList = this.query.queryAllMotoristas();
         List<WMotorista> wmotos = new Vector<WMotorista>();
         for (Motorista moto : motoList)
             wmotos.add(new WMotorista(moto));
@@ -365,13 +372,17 @@ public class Main extends Application {
     }
 
     private void createClienteTab(Tab tab1) {
-        SGDBTable<Cliente> dataTable1 = new SGDBTable<Cliente>();
+        SGDBTable<WCliente> dataTable1 = new SGDBTable<WCliente>();
         Vector<String> colNames = new Vector<String>();
         colNames.add("Cod_cliente");
         colNames.add("Nome");
         colNames.add("Endereco");
         dataTable1.setColumNames(colNames);
-        dataTable1.setTableData(this.query.queryAllClientes());
+        List<Cliente> cliList = this.query.queryAllClientes();
+        List<WCliente> wclis = new Vector<WCliente>();
+        for (Cliente cli : cliList)
+            wclis.add(new WCliente(cli));
+        dataTable1.setTableData(wclis);
         tab1.setContent(dataTable1.getTable());
     }
 }
