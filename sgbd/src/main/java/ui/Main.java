@@ -4,17 +4,26 @@ import elements.SGDBTable;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import entities.*;
+import queries.Deletion;
+import queries.Insertion;
+import queries.Query;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.*;
 import java.util.Vector;
 
 public class Main extends Application {
+
+    private Query query;
 
     public static void main(String[] args) {
         launch(args);
@@ -48,76 +57,23 @@ public class Main extends Application {
         tabPane.getTabs().add(tab6);
         tabPane.getTabs().add(tab7);
 
-        // Tabela de Cliente
-        SGDBTable<Cliente> dataTable1 = new SGDBTable<Cliente>();
-        Vector<String> colNames = new Vector<String>();
-        colNames.add("Cod_cliente");
-        colNames.add("Nome");
-        colNames.add("Endereco");
-        dataTable1.setColumNames(colNames);
-        tab1.setContent(dataTable1.getTable());
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("LocadoraVeiculos-PU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        while(this.query == null)
+            this.query = new Query(entityManager);
+        this.createClienteTab(tab1);
+        this.createMotoristaTab(tab2);
+        this.createReservasTab(tab3);
+        this.createLocacoesTab(tab4);
+        this.createVeiculosTab(tab5);
+        this.createTiposVeicTab(tab6);
+        this.createFiliaisTab(tab7);
 
-        SGDBTable<Motorista> dataTable2 = new SGDBTable<Motorista>();
-        colNames = new Vector<>();
-        colNames.add("Cod_motorista");
-        colNames.add("Cod_cliente");
-        colNames.add("Num_habili");
-        colNames.add("Ident_motorista");
-        colNames.add("Vencimento_habili");
-        dataTable2.setColumNames(colNames);
-        tab2.setContent(dataTable2.getTable());
-
-        SGDBTable<Reserva> dataTable3 = new SGDBTable<Reserva>();
-        colNames = new Vector<>();
-        colNames.add("Cod_reserva");
-        colNames.add("Tipo");
-        colNames.add("Cod_filial_dest");
-        colNames.add("Cod_filial_orig");
-        colNames.add("Cod_cliente");
-        colNames.add("Data_retirada");
-        colNames.add("Data_entrega");
-        dataTable3.setColumNames(colNames);
-        tab3.setContent(dataTable3.getTable());
-
-        SGDBTable<Locacao> dataTable4 = new SGDBTable<Locacao>();
-        colNames = new Vector<>();
-        colNames.add("Cod_locacao");
-        colNames.add("Cod_placa");
-        colNames.add("Cod_filial_dest");
-        // tem que ver como que faz drop down dentro de tabela
-        // ver pq é uma lista
-//        colNames.add("Cod_motorista");
-        colNames.add("Data_entrega");
-        dataTable4.setColumNames(colNames);
-        tab4.setContent(dataTable4.getTable());
-
-        SGDBTable<Veiculo> dataTable5 = new SGDBTable<Veiculo>();
-        colNames = new Vector<>();
-        colNames.add("Cod_placa");
-        colNames.add("Cod_tipo");
-        colNames.add("Cod_filial_atual");
-        colNames.add("Num_chassi");
-        colNames.add("Num_motor");
-        colNames.add("Cor");
-        colNames.add("Km_atual");
-        colNames.add("revisao_pendente");
-        dataTable5.setColumNames(colNames);
-        tab5.setContent(dataTable5.getTable());
-
-        SGDBTable<Tipo_Veiculo> dataTable6 = new SGDBTable<>();
-        colNames = new Vector<>();
-        colNames.add("Cod_tipo");
-        colNames.add("Horas_limpeza");
-        colNames.add("Horas_revisao");
-        dataTable6.setColumNames(colNames);
-        tab6.setContent(dataTable6.getTable());
-
-        SGDBTable<Filial> dataTable7 = new SGDBTable<>();
-        colNames = new Vector<>();
-        colNames.add("Cod_filial");
-        colNames.add("Localizacao");
-        dataTable7.setColumNames(colNames);
-        tab7.setContent(dataTable7.getTable());
+        //todo: adcionar algo para atualizar dinâmicamente as linhas
+//        Insertion inserts = new Insertion(entityManager);
+//        Deletion deletions = new Deletion(entityManager);
+//
+//
 
         tabPane.getSelectionModel().selectedItemProperty().addListener(
                 new ChangeListener<Tab>() {
@@ -128,6 +84,28 @@ public class Main extends Application {
                         System.out.print("] para: [");
                         System.out.print(t1.getText());
                         System.out.println("]");
+                        Tab tab1 = new Tab("Clientes");
+                        Tab tab2 = new Tab("Motoristas");
+                        Tab tab3 = new Tab("Reservas");
+                        Tab tab4 = new Tab("Locações");
+                        Tab tab5 = new Tab("Veiculos");
+                        Tab tab6 = new Tab("Tipos de Veículos");
+                        Tab tab7 = new Tab("Filiais");
+                        if (t1.getText().equals("Clientes"))
+                            createClienteTab(t1);
+                        else if (t1.getText().equals("Motoristas"))
+                            createMotoristaTab(t1);
+                        else if (t1.getText().equals("Reservas"))
+                            createReservasTab(t1);
+                        else if (t1.getText().equals("Locações"))
+                            createLocacoesTab(t1);
+                        else if (t1.getText().equals("Veiculos"))
+                            createVeiculosTab(t1);
+                        else if (t1.getText().equals("Tipos de Veículos"))
+                            createTiposVeicTab(t1);
+                        else if (t1.getText().equals("Filiais"))
+                            createFiliaisTab(t1);
+
                     }
                 }
         );
@@ -169,7 +147,12 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("LOCADORA DE VEÍCULOS");
 
-        primaryStage.show();
+        primaryStage.showAndWait();
+
+//        deletions.clearAllTables();
+//        inserts.populateTables();
+          entityManager.close();
+          entityManagerFactory.close();
     }
 
     private void handleConsult(Stage primaryStage) {
@@ -293,4 +276,95 @@ public class Main extends Application {
         primaryStage.showAndWait();
     }
 
+    private void createFiliaisTab(Tab tab7) {
+        SGDBTable<Filial> dataTable7 = new SGDBTable<>();
+        Vector<String> colNames = new Vector<>();
+        colNames.add("Cod_filial");
+        colNames.add("Localizacao");
+        dataTable7.setColumNames(colNames);
+        dataTable7.setTableData(query.queryAllFiliais());
+        tab7.setContent(dataTable7.getTable());
+    }
+
+    private void createTiposVeicTab(Tab tab6) {
+        SGDBTable<Tipo_Veiculo> dataTable6 = new SGDBTable<>();
+        Vector<String> colNames = new Vector<>();
+        colNames.add("Cod_tipo");
+        colNames.add("Horas_limpeza");
+        colNames.add("Horas_revisao");
+        dataTable6.setColumNames(colNames);
+        dataTable6.setTableData(query.queryAllTiposVeiculo());
+        tab6.setContent(dataTable6.getTable());
+    }
+
+    private void createVeiculosTab(Tab tab5) {
+        SGDBTable<Veiculo> dataTable5 = new SGDBTable<Veiculo>();
+        Vector<String> colNames = new Vector<>();
+        colNames.add("Cod_placa");
+        colNames.add("Cod_tipo");
+        colNames.add("Cod_filial_atual");
+        colNames.add("Num_chassi");
+        colNames.add("Num_motor");
+        colNames.add("Cor");
+        colNames.add("Km_atual");
+        colNames.add("revisao_pendente");
+        dataTable5.setColumNames(colNames);
+        dataTable5.setTableData(query.queryAllVeiculos());
+        tab5.setContent(dataTable5.getTable());
+
+    }
+
+    private void createLocacoesTab(Tab tab4) {
+        SGDBTable<Locacao> dataTable4 = new SGDBTable<Locacao>();
+        Vector<String> colNames = new Vector<>();
+        colNames.add("Cod_locacao");
+        colNames.add("Cod_placa");
+        colNames.add("Cod_filial_dest");
+        // tem que ver como que faz drop down dentro de tabela
+        // ver pq é uma lista
+//        colNames.add("Cod_motorista");
+        colNames.add("Data_entrega");
+        dataTable4.setColumNames(colNames);
+        dataTable4.setTableData(query.queryAllLocacoes());
+        tab4.setContent(dataTable4.getTable());
+    }
+
+    private void createReservasTab(Tab tab3) {
+        SGDBTable<Reserva> dataTable3 = new SGDBTable<Reserva>();
+        Vector<String> colNames = new Vector<>();
+        colNames.add("Cod_reserva");
+        colNames.add("Tipo");
+        colNames.add("Cod_filial_dest");
+        colNames.add("Cod_filial_orig");
+        colNames.add("Cod_cliente");
+        colNames.add("Data_retirada");
+        colNames.add("Data_entrega");
+        dataTable3.setColumNames(colNames);
+        dataTable3.setTableData(query.queryAllReservas());
+        tab3.setContent(dataTable3.getTable());
+    }
+
+    private void createMotoristaTab(Tab tab2) {
+        SGDBTable<Motorista> dataTable2 = new SGDBTable<Motorista>();
+        Vector<String> colNames = new Vector<>();
+        colNames.add("Cod_motorista");
+        colNames.add("Cod_cliente");
+        colNames.add("Num_habili");
+        colNames.add("Ident_motorista");
+        colNames.add("Vencimento_habili");
+        dataTable2.setColumNames(colNames);
+        dataTable2.setTableData(query.queryAllMotoristas());
+        tab2.setContent(dataTable2.getTable());
+    }
+
+    private void createClienteTab(Tab tab1) {
+        SGDBTable<Cliente> dataTable1 = new SGDBTable<Cliente>();
+        Vector<String> colNames = new Vector<String>();
+        colNames.add("Cod_cliente");
+        colNames.add("Nome");
+        colNames.add("Endereco");
+        dataTable1.setColumNames(colNames);
+        dataTable1.setTableData(this.query.queryAllClientes());
+        tab1.setContent(dataTable1.getTable());
+    }
 }

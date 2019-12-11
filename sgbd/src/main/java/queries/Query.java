@@ -35,6 +35,8 @@ public class Query {
             instance = new Query(entityManager);
 
             clienteQueries = new ClienteQueries(entityManager);
+            if(clienteQueries == null)
+                System.out.println("client queries null");
             filialQueries = new FilialQueries(entityManager);
             locacaoQueries = new LocacaoQueries(entityManager);
             motoristaQueries = new MotoristaQueries(entityManager);
