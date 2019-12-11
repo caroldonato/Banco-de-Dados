@@ -33,7 +33,7 @@ public class FilialQueries {
      */
     public List<Filial> queryAllFiliais()
     {
-        String jpql = "SELECT f FROM Filial";
+        String jpql = "SELECT f FROM Filial f";
         TypedQuery<Filial> typedQuery = em.createQuery(jpql, Filial.class);
         return typedQuery.getResultList();
     }

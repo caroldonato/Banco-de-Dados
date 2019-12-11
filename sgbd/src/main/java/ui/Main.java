@@ -1,6 +1,7 @@
 package ui;
 
 import elements.SGDBTable;
+import elements.WMotorista;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,6 +20,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.*;
+import java.util.List;
 import java.util.Vector;
 
 public class Main extends Application {
@@ -61,6 +63,7 @@ public class Main extends Application {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         while(this.query == null)
             this.query = new Query(entityManager);
+        this.query.setQueries();
         this.createClienteTab(tab1);
         this.createMotoristaTab(tab2);
         this.createReservasTab(tab3);
@@ -147,12 +150,12 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("LOCADORA DE VEÍCULOS");
 
-        primaryStage.showAndWait();
+        primaryStage.show();
 
 //        deletions.clearAllTables();
 //        inserts.populateTables();
-          entityManager.close();
-          entityManagerFactory.close();
+//          entityManager.close();
+//          entityManagerFactory.close();
     }
 
     private void handleConsult(Stage primaryStage) {
@@ -345,7 +348,7 @@ public class Main extends Application {
     }
 
     private void createMotoristaTab(Tab tab2) {
-        SGDBTable<Motorista> dataTable2 = new SGDBTable<Motorista>();
+        SGDBTable<WMotorista> dataTable2 = new SGDBTable<WMotorista>();
         Vector<String> colNames = new Vector<>();
         colNames.add("Cod_motorista");
         colNames.add("Cod_cliente");
@@ -353,7 +356,11 @@ public class Main extends Application {
         colNames.add("Ident_motorista");
         colNames.add("Vencimento_habili");
         dataTable2.setColumNames(colNames);
-        dataTable2.setTableData(query.queryAllMotoristas());
+        List<Motorista> motoList = query.queryAllMotoristas();
+        List<WMotorista> wmotos = new Vector<WMotorista>();
+        for (Motorista moto : motoList)
+            wmotos.add(new WMotorista(moto));
+        dataTable2.setTableData(wmotos);
         tab2.setContent(dataTable2.getTable());
     }
 
