@@ -1,0 +1,295 @@
+ALTER SEQUENCE cliente_cod_cliente_seq RESTART;
+ALTER SEQUENCE locacao_cod_locacao_seq RESTART;
+ALTER SEQUENCE motorista_cod_motorista_seq RESTART;
+ALTER SEQUENCE reserva_cod_reserva_seq RESTART;
+ALTER SEQUENCE revisao_cod_revisao_seq RESTART;
+
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Dália Espírito Santo', 'Guaratinga') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 61127815678, 'M', '2001-9-7');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('César Barata', 'Bom Jesus da Serra') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 97988879627, 'F', '1972-8-18');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Margarida Sarabia', 'Olho d`Água das Flores') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 15325895398, 'F', '1987-1-18');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Sara Téllez', 'Maracás') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 48097271206, 'F', '2009-10-23');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Judá Guaraná', 'Brotas de Macaúbas') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 59059679148, 'M', '2009-5-29');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Vânia Gago', 'Pedrão') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 61822826506, 'M', '2012-1-13');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Ângelo Caldas', 'Dias d`Ávila') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 80405348670, 'F', '2001-2-27');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Adélio Monsanto', 'Coração de Maria') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 50402866864, 'F', '1994-11-26');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Tairine Júdice', 'Olho d`Água Grande') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 85167585170, 'F', '1976-9-15');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Edgar Jucá', 'Nova Ibiá') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 83341800675, 'F', '2001-8-28');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('César Marino', 'Manaus') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 51808243971, 'F', '1991-2-21');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Gedeão Aragón', 'Ibotirama') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 39262111201, 'M', '1979-9-18');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Camila Furquim', 'Canarana') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 23461650040, 'M', '1987-7-18');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Adélio Monsanto', 'Jussiape') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 64629966186, 'M', '1976-8-30');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Moacir Cuaresma', 'Lauro de Freitas') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 55710232516, 'F', '2005-2-13');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Iberê Zagalo', 'Dário Meira') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 47705931536, 'M', '1976-9-12');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Oriana Damásio', 'Lagoa da Canoa') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 93753570401, 'F', '1981-12-30');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Aline Porto', 'Conceição do Almeida') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 36823604515, 'F', '1986-4-27');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Máxima Jiménez', 'Carauari') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 96484905106, 'M', '2002-3-8');
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Palo Penteado', 'Mortugaba') RETURNING cod_cliente)
+INSERT INTO Pessoa_Fisica(cod_cliente, cpf, sexo, data_nasc) VALUES ((SELECT cod_cliente FROM client), 92436515416, 'M', '1997-2-19');
+
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Zulmira Estrella Inc', 'Batalha') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 506334540551, 878609889324);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Alcides Bulhões Inc', 'Jaguaquara') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 586558602042, 580604083570);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Josefina Cruz Inc', 'Barra de São Miguel') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 405731363191, 545000226016);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Aurélia Pamplona Inc', 'Cairu') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 722489803887, 670092177182);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Romão Quinteiro Inc', 'Nova Itarana') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 728838105936, 300747990634);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Adalberto Bulhão Inc', 'Mata de São João') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 562838854584, 678166114964);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Alvito Moura Inc', 'Igaci') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 550401067537, 172051938457);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Edgar Setúbal Inc', 'Brotas de Macaúbas') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 488133637307, 229029647383);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Gabriela Filgueiras Inc', 'Bonito') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 494435913595, 130310534790);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Rufus Castello Branco Inc', 'Brumado') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 901521323336, 701642852378);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Benedito Arantes Inc', 'Envira') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 753795301985, 153301777514);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Belmifer Castelo Inc', 'Piaçabuçu') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 664059896394, 119010454792);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Morgana Espartero Inc', 'Aiquara') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 111599968157, 615959749684);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Tália Porto Inc', 'Lajedinho') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 313031325279, 886970514245);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Querubim Faia Inc', 'Barcelos') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 589999822764, 422728132103);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Ester Alencastre Inc', 'Andaraí') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 559603261956, 585362292970);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Cristiano Zambujal Inc', 'Atalaia') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 922169447735, 248309331170);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Belmifer Castelo Inc', 'Condeúba') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 445451218055, 393178053124);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Marcelo Ayres Inc', 'Olho d`Água Grande') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 205663272411, 577494807879);
+WITH client AS (INSERT INTO Cliente(nome, endereco) VALUES ('Clotilde Cachão Inc', 'Jussari') RETURNING cod_cliente)
+INSERT INTO Pessoa_Juridica(cod_cliente, cnpj, inscr_estado) VALUES ((SELECT cod_cliente FROM client), 389884734274, 933893163487);
+
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (10, 99495829007, '2024-3-17', 16245482986);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (4, 36106067379, '2023-9-6', 40546317790);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (1, 15538927966, '2022-1-23', 63392484029);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (20, 94965667607, '2029-2-4', 30669232012);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (26, 45653887000, '2027-10-21', 74258914236);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (2, 85922951570, '2022-12-8', 45447516505);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (12, 93960555541, '2027-5-5', 16357060021);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (40, 42868428765, '2023-8-22', 45041449902);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (13, 73402700675, '2022-12-17', 84917277212);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (15, 86356141823, '2020-8-20', 57944035794);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (12, 20167812771, '2029-8-12', 44875430194);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (14, 89563594319, '2021-4-9', 63120775696);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (16, 64328480667, '2027-3-16', 27287466267);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (19, 78551565346, '2026-6-16', 75267105640);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (28, 87887059627, '2024-6-7', 19637456841);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (25, 25782147845, '2024-3-9', 67140516956);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (10, 90466508869, '2027-11-1', 71453462519);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (13, 62191282806, '2022-5-31', 53266570533);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (8, 46692600761, '2027-12-16', 67804801765);
+INSERT INTO Motorista(cod_cliente, num_habili, vencimento_habili, ident_motorista) VALUES (24, 79778605822, '2027-6-21', 77833105285);
+
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('UDCKT', 151, 1) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'R', 2, 4, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('ICSWD', 61, 12) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'K', 1, 4, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('RYZLN', 141, 7) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'R', 1, 2, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('XQVVE', 131, 9) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'H', 7, 4, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('KJASG', 171, 14) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'H', 6, 2, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('ZXJHV', 31, 6) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'F', 2, 4, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('NDIYJ', 11, 5) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'V', 2, 1, TRUE, FALSE, TRUE, FALSE, FALSE, TRUE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('BIPGN', 111, 11) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'J', 3, 2, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('DGNVV', 141, 15) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'T', 7, 2, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('WZSAY', 131, 7) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'U', 3, 4, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('OEEXP', 121, 2) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'N', 7, 4, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('XIRDU', 181, 10) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'S', 7, 2, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('CTTXE', 21, 12) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'N', 6, 2, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('XVTCJ', 41, 5) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'E', 7, 1, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('TSAXT', 121, 6) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'H', 4, 2, FALSE, FALSE, TRUE, TRUE, TRUE, FALSE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('QMPCJ', 11, 7) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'W', 3, 3, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('FTQAZ', 31, 9) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'Z', 5, 2, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('QIMIB', 151, 9) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'Y', 3, 4, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('GEJEN', 11, 11) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'F', 7, 2, TRUE, TRUE, FALSE, TRUE, FALSE, TRUE);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('QYYQU', 141, 17) RETURNING cod_tipo)
+INSERT INTO Tipo_Passageiro(cod_tipo, tamanho, num_lugares, num_portas, ar_condicionado, radio, mp3, cd, dir_hidr, cambio_auto) VALUES ((SELECT cod_tipo FROM tipo), 'W', 6, 1, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE);
+
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('UNDOT', 18, 2) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 2582);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('TTQCY', 6, 4) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 1075);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('TEVOR', 16, 15) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 2808);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('OKFDK', 15, 5) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 1549);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('TTRHV', 8, 11) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 5170);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('QJZST', 17, 14) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 711);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('WYDVX', 7, 11) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 378);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('CXZAG', 8, 17) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 9929);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('ABPCV', 14, 18) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 9003);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('HCJOP', 14, 19) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 1166);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('NFYKQ', 1, 11) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 9873);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('XZFGT', 4, 6) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 305);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('VDKJK', 4, 1) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 4490);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('FKUDC', 16, 7) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 3987);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('MOQLF', 16, 19) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 4485);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('ARMED', 20, 4) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 506);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('YGEAW', 8, 14) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 3540);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('QYZER', 1, 16) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 7191);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('VQRRB', 18, 9) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 9633);
+WITH tipo AS (INSERT INTO Tipo_Veiculo(cod_tipo, horas_limpeza, horas_revisao) VALUES ('FXCZI', 7, 20) RETURNING cod_tipo)
+INSERT INTO Tipo_Carga(cod_tipo, capacidade) VALUES ((SELECT cod_tipo FROM tipo), 7935);
+
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('RPENBWYIGF', 'Ouriçangas');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('ZROTAIKJWY', 'Miguel Calmon');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('HIZEHSIYZU', 'Santa Luzia do Norte');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('TELPVVEPQM', 'São Luís do Quitunde');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('VUNLEUIYMI', 'Anguera');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('RQHRDCOJXC', 'Porto Grande');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('PDVLLGLOVQ', 'Andaraí');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('AQKBBCWWXG', 'Cafarnaum');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('AUBCAYOGVM', 'Belo Monte');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('UASFMNZIHO', 'Feira Grande');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('XGDKMUYYDU', 'Laje');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('HQJORKWAVA', 'Aramari');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('LIATNXOZHM', 'Cipó');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('TFSHPKXAVK', 'Anadia');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('LCSTJGCKVJ', 'Jussari');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('YYZXLYQTVK', 'Olho d`Água Grande');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('ATIEAUMYMX', 'Pilão Arcado');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('IMDWLLGTIT', 'Guaratinga');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('LYUMQWJPCR', 'Igrapiúna');
+INSERT INTO Filial(cod_filial, localizacao) VALUES ('XCKFIBJZZV', 'Boa Nova');
+
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('HLXIGPFEAT', 'UNDOT', 'UASFMNZIHO', '486572', '649811', 'DAGCF', 55354);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('OWUPCEDUXG', 'TSAXT', 'LYUMQWJPCR', '984669', '719227', 'DNHZC', 9900);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('BHCULLMISZ', 'QIMIB', 'LYUMQWJPCR', '230145', '859191', 'RLWKI', 31684);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('FPRYXTMALS', 'ABPCV', 'AQKBBCWWXG', '576388', '100182', 'IRJBC', 70657);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('PIBZDWRQYW', 'QJZST', 'PDVLLGLOVQ', '314415', '129732', 'CQEOK', 55343);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('VIAODDNEZU', 'QIMIB', 'HQJORKWAVA', '715174', '514263', 'XSORK', 35498);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('KFPADRNJJZ', 'RYZLN', 'LYUMQWJPCR', '570627', '662648', 'ZYANS', 34943);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('LXVXZBIUYI', 'UDCKT', 'LIATNXOZHM', '574706', '159771', 'BWLOZ', 82134);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('LIJPNAQDWZ', 'OKFDK', 'VUNLEUIYMI', '297002', '136229', 'LDCRX', 79114);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('VJMVFBOTXL', 'QYZER', 'ZROTAIKJWY', '724955', '750706', 'GWQPE', 94857);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('HMMKEBLRLT', 'FTQAZ', 'LCSTJGCKVJ', '985063', '110922', 'NHUSO', 83326);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('RDPTBKDCQR', 'FKUDC', 'LCSTJGCKVJ', '125709', '606126', 'MWAZO', 79984);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('VDPSKCMQEA', 'QJZST', 'LCSTJGCKVJ', '104066', '541637', 'ESFMX', 7951);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('XQNQHWTKFW', 'OKFDK', 'AUBCAYOGVM', '902577', '499860', 'BNMTA', 83324);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('HTNXJFKSXZ', 'FXCZI', 'PDVLLGLOVQ', '427558', '409797', 'SQGMA', 45214);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('GHCXXMYBBN', 'TSAXT', 'VUNLEUIYMI', '458453', '635672', 'KLVWZ', 4002);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('NFJSFZQYZG', 'YGEAW', 'HQJORKWAVA', '994960', '348069', 'JYCQJ', 73594);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('PAJXJRXNQL', 'QMPCJ', 'TELPVVEPQM', '602166', '159550', 'MXXMZ', 56520);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('FCUFHJMKKU', 'NDIYJ', 'XGDKMUYYDU', '251897', '850633', 'DNYOW', 74567);
+INSERT INTO Veiculo(cod_placa, cod_tipo, cod_filial_atual, num_chassi, num_motor, cor, km_atual) VALUES ('QTBVBNJUAU', 'TSAXT', 'LIATNXOZHM', '561649', '284596', 'EFQUD', 25588);
+
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('VDKJK', 93099);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('WZSAY', 99724);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('XZFGT', 58872);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('WZSAY', 604);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('VQRRB', 55548);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('ABPCV', 92646);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('FXCZI', 74252);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('HCJOP', 53746);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('CTTXE', 67096);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('BIPGN', 19984);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('ARMED', 50989);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('WYDVX', 79854);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('GEJEN', 92602);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('GEJEN', 51464);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('OEEXP', 26552);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('TEVOR', 71109);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('XZFGT', 22307);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('BIPGN', 83809);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('VQRRB', 56828);
+INSERT INTO Revisao(cod_tipo, km_media) VALUES ('FXCZI', 85170);
+
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('ICSWD', 'HQJORKWAVA', 'YYZXLYQTVK', 7, '2028-9-12', '2032-3-30');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('ICSWD', 'LYUMQWJPCR', 'YYZXLYQTVK', 28, '2021-3-4', '2025-2-5');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('WZSAY', 'AUBCAYOGVM', 'AQKBBCWWXG', 36, '2029-9-13', '2030-3-25');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('MOQLF', 'UASFMNZIHO', 'LYUMQWJPCR', 20, '2036-5-13', '2038-2-4');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('DGNVV', 'AQKBBCWWXG', 'IMDWLLGTIT', 40, '2033-3-17', '2035-7-27');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('ZXJHV', 'RQHRDCOJXC', 'PDVLLGLOVQ', 28, '2027-6-5', '2035-11-11');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('CTTXE', 'HIZEHSIYZU', 'ZROTAIKJWY', 4, '2020-3-1', '2031-7-21');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('NDIYJ', 'LIATNXOZHM', 'ZROTAIKJWY', 39, '2030-11-1', '2036-10-8');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('BIPGN', 'HQJORKWAVA', 'RPENBWYIGF', 37, '2037-7-30', '2039-3-18');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('QYZER', 'XCKFIBJZZV', 'LIATNXOZHM', 34, '2032-3-2', '2036-2-23');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('TTQCY', 'HIZEHSIYZU', 'RQHRDCOJXC', 39, '2020-4-2', '2035-3-25');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('FTQAZ', 'TFSHPKXAVK', 'TELPVVEPQM', 11, '2026-8-21', '2038-7-31');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('TTRHV', 'RQHRDCOJXC', 'XCKFIBJZZV', 37, '2021-5-18', '2023-8-16');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('CXZAG', 'LIATNXOZHM', 'HIZEHSIYZU', 35, '2036-10-21', '2038-10-28');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('TTRHV', 'VUNLEUIYMI', 'LCSTJGCKVJ', 8, '2024-4-11', '2037-10-2');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('VQRRB', 'LYUMQWJPCR', 'XCKFIBJZZV', 14, '2026-12-3', '2037-5-19');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('XZFGT', 'HQJORKWAVA', 'AUBCAYOGVM', 21, '2026-12-29', '2036-9-6');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('OEEXP', 'IMDWLLGTIT', 'VUNLEUIYMI', 27, '2024-8-4', '2037-12-2');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('TTQCY', 'RPENBWYIGF', 'UASFMNZIHO', 30, '2021-3-23', '2028-3-19');
+INSERT INTO Reserva(cod_tipo, cod_filial_dest, cod_filial_orig, cod_cliente, data_retirada, data_entrega) VALUES ('CXZAG', 'RQHRDCOJXC', 'LYUMQWJPCR', 26, '2029-11-5', '2039-7-18');
+
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('GHCXXMYBBN', 'YYZXLYQTVK', 17, '2023-7-13');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('HTNXJFKSXZ', 'LIATNXOZHM', 18, '2032-1-28');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('LIJPNAQDWZ', 'LCSTJGCKVJ', 2, '2033-7-14');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('NFJSFZQYZG', 'RQHRDCOJXC', 10, '2032-4-3');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('FCUFHJMKKU', 'VUNLEUIYMI', 7, '2025-12-22');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('HLXIGPFEAT', 'PDVLLGLOVQ', 3, '2026-2-3');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('KFPADRNJJZ', 'IMDWLLGTIT', 16, '2020-5-28');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('VIAODDNEZU', 'TFSHPKXAVK', 3, '2029-5-31');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('VIAODDNEZU', 'XCKFIBJZZV', 18, '2023-9-19');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('FPRYXTMALS', 'PDVLLGLOVQ', 10, '2027-6-8');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('QTBVBNJUAU', 'AQKBBCWWXG', 7, '2030-1-6');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('VJMVFBOTXL', 'XGDKMUYYDU', 11, '2028-11-19');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('NFJSFZQYZG', 'LIATNXOZHM', 13, '2021-4-28');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('LIJPNAQDWZ', 'HIZEHSIYZU', 14, '2024-5-21');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('XQNQHWTKFW', 'RPENBWYIGF', 15, '2020-3-18');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('VDPSKCMQEA', 'LIATNXOZHM', 8, '2030-5-12');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('FCUFHJMKKU', 'LCSTJGCKVJ', 4, '2030-12-29');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('LIJPNAQDWZ', 'VUNLEUIYMI', 3, '2032-3-27');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('KFPADRNJJZ', 'XCKFIBJZZV', 8, '2032-9-14');
+INSERT INTO Locacao(cod_placa, cod_filial_dest, cod_motorista, data_entrega) VALUES ('GHCXXMYBBN', 'HQJORKWAVA', 15, '2030-1-10');
