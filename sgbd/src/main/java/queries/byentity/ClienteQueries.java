@@ -36,7 +36,7 @@ public class ClienteQueries {
      */
     public List<Cliente> queryAllClientes()
     {
-        String jpql = "SELECT c FROM Cliente";
+        String jpql = "SELECT c FROM Cliente c";
         TypedQuery<Cliente> typedQuery = em.createQuery(jpql, Cliente.class);
         return typedQuery.getResultList();
     }

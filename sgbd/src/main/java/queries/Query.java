@@ -9,16 +9,16 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class Query {
-    private static EntityManager em;
+    private EntityManager em;
 
-    private static ClienteQueries clienteQueries;
-    private static FilialQueries filialQueries;
-    private static LocacaoQueries locacaoQueries;
-    private static MotoristaQueries motoristaQueries;
-    private static ReservaQueries reservaQueries;
-    private static RevisaoQueries revisaoQueries;
-    private static VehicleQueries vehicleQueries;
-    private static VehicleTypeQueries vehicleTypeQueries;
+    private ClienteQueries clienteQueries;
+    private FilialQueries filialQueries;
+    private LocacaoQueries locacaoQueries;
+    private MotoristaQueries motoristaQueries;
+    private ReservaQueries reservaQueries;
+    private RevisaoQueries revisaoQueries;
+    private VehicleQueries vehicleQueries;
+    private VehicleTypeQueries vehicleTypeQueries;
 
     private static Query instance = null;
 
@@ -27,23 +27,26 @@ public class Query {
     // ========================================================================
 
     public Query(EntityManager entityManager) {
-        em = entityManager;
+        this.em = entityManager;
     }
 
     public static Query getInstance(EntityManager entityManager) {
         if(instance == null) {
             instance = new Query(entityManager);
-
-            clienteQueries = new ClienteQueries(entityManager);
-            filialQueries = new FilialQueries(entityManager);
-            locacaoQueries = new LocacaoQueries(entityManager);
-            motoristaQueries = new MotoristaQueries(entityManager);
-            reservaQueries = new ReservaQueries(entityManager);
-            revisaoQueries = new RevisaoQueries(entityManager);
-            vehicleQueries = new VehicleQueries(entityManager);
-            vehicleTypeQueries = new VehicleTypeQueries(entityManager);
         }
         return instance;
+    }
+
+    public void setQueries()
+    {
+        this.clienteQueries = new ClienteQueries(this.em);
+        this.filialQueries = new FilialQueries(this.em);
+        this.locacaoQueries = new LocacaoQueries(this.em);
+        this.motoristaQueries = new MotoristaQueries(this.em);
+        this.reservaQueries = new ReservaQueries(this.em);
+        this.revisaoQueries = new RevisaoQueries(this.em);
+        this.vehicleQueries = new VehicleQueries(this.em);
+        this.vehicleTypeQueries = new VehicleTypeQueries(this.em);
     }
 
     // ========================================================================
